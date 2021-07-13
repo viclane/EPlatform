@@ -15,7 +15,7 @@ class PlanningRequest extends BaseRequest
     public function rules()
     {
         return [
-            'cours_id' => 'nullable|exists:cours,id',
+            'course_id' => 'nullable|exists:cours,id',
             'debut_date' => array('required', 'bail', 'date_format:"d/m/Y"', 'after:yesterday'),
             'debut_heure' => array('required', 'bail', 'date_format:"H:i"', function ($attribute, $value, $fail) {
                 if (self::isInvalideDate($this->debut_date)) {
@@ -32,7 +32,7 @@ class PlanningRequest extends BaseRequest
                             $fail('Le temps est invalide et doit etre en avance d\'au moins 30 minutes');
                         }
 
-                        $planning = Planning::whereRaw("cours_id = {$this->cours_id} AND date_debut <= '{$formDate->format('Y-m-d H:i')}' AND date_fin > '{$formDate->format('Y-m-d H:i')}'")->first();
+                        $planning = Planning::whereRaw("course_id = {$this->course_id} AND date_debut <= '{$formDate->format('Y-m-d H:i')}' AND date_fin > '{$formDate->format('Y-m-d H:i')}'")->first();
                         if ($planning) {
                             $isActualPlanning = $this->route('planning') ? $this->route('planning')->id == $planning->id : false;
 
@@ -64,7 +64,7 @@ class PlanningRequest extends BaseRequest
                             $fail('La date et l\'heure de fin doivent etre superieur a la date de debut d\'au moins 20 minutes');
                         }
 
-                        $planning = Planning::whereRaw("cours_id = {$this->cours_id} AND date_debut < '{$formDate->format('Y-m-d H:i')}' AND date_fin >= '{$formDate->format('Y-m-d H:i')}'")->first();
+                        $planning = Planning::whereRaw("course_id = {$this->course_id} AND date_debut < '{$formDate->format('Y-m-d H:i')}' AND date_fin >= '{$formDate->format('Y-m-d H:i')}'")->first();
                         if ($planning) {
                             $isActualPlanning = $this->route('planning') ? $this->route('planning')->id == $planning->id : false;
 

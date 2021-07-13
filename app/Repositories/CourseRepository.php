@@ -45,7 +45,7 @@ class CourseRepository
         }
 
         if ($user = request()->user()) {
-            $courses = $courses->leftJoin('cours_users', 'cours.id', '=', 'cours_users.cours_id')
+            $courses = $courses->leftJoin('cours_users', 'cours.id', '=', 'cours_users.course_id')
                 ->where('cours_users.user_id', '=', null);
         }
 

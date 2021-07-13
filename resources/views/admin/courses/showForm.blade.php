@@ -6,7 +6,7 @@
     }
 @endphp
 
-@extends('layouts.app', ['title' => $editing ? 'Modifier le cours' : 'Ajouter un cours'])
+@extends('layouts.app', ['title' => $editing ? 'Edit course' : 'Add course'])
 
 @section('content')
     <form action="{{ $editing ? route('admin.courses.update', ['course' => $course->id]) : route('admin.courses.store') }}" method="post">
@@ -20,11 +20,11 @@
                 <div class="col-md-8 {{ $editing ? '' : 'mx-auto' }}">
                     <div class="card">
                         <div class="card-header">
-                            {{ $editing ? 'Modifier le cours' : 'Ajouter un cours' }}
+                            {{ $editing ? 'Edit course' : 'Add course' }}
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="intitule">Intitule</label>
+                                <label for="title">title</label>
                                 <input type="text" name="intitule" id="intitule" value="{{ old('intitule', $course->intitule) }}" class="form-control @error('intitule') is-invalid @enderror" required>
 
                                 @error('intitule')

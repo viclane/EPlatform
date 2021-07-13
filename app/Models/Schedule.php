@@ -10,7 +10,7 @@ class Schedule extends Model
     use HasFactory;
 
     protected $fillable = [
-        'start_date', 'date_fin', 'cours_id'
+        'start_date', 'date_fin', 'course_id'
     ];
 
     protected $casts = [
@@ -25,7 +25,7 @@ class Schedule extends Model
 
     public function course()
     {
-        return $this->belongsTo(Course::class, 'cours_id');
+        return $this->belongsTo(Course::class, 'course_id');
     }
 
     public function getDebutDateAttribute()

@@ -54,7 +54,7 @@ class ScheduleController extends Controller
 
         if ($course_id = $request->get('course_id')) {
             if (Course::find($course_id)) {
-                $schedule->cours_id = $course_id;
+                $schedule->course_id = $course_id;
             }
         }
 

@@ -81,7 +81,7 @@ class User extends Authenticatable
     public function courses()
     {
         return $this->is_student
-            ? $this->belongsToMany(Course::class, 'cours_users', 'user_id', 'cours_id')
+            ? $this->belongsToMany(Course::class, 'user_course', 'user_id', 'course_id')
             : $this->hasMany(Course::class, 'user_id');
     }
 
@@ -92,7 +92,7 @@ class User extends Authenticatable
      */
 
     // public function liste() {
-    //     return $this->belongsToMany(Cours::class, '', 'user_id', 'cours_id');
+    //     return $this->belongsToMany(Cours::class, '', 'user_id', 'course_id');
     //       ->withPivot('')
     //       ->withTimestamps();
     // }

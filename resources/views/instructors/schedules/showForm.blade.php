@@ -78,25 +78,25 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="cours_id">
+                                <label for="course_id">
                                     {{ __('Cours') }}
                                 </label>
 
-                                <select name="cours_id" id="cours_id"
-                                    class="form-control @error('cours_id') is-invalid @enderror" required>
+                                <select name="course_id" id="course_id"
+                                    class="form-control @error('course_id') is-invalid @enderror" required>
                                     <option value="" disabled
-                                        @if(old('cours_id', $planning->cours_id) == null) selected @endif>
+                                        @if(old('course_id', $planning->course_id) == null) selected @endif>
                                         Choisir un cours
                                     </option>
                                     @foreach($courses as $course)
                                     <option value="{{ $course->id }}"
-                                        @if(old('cours_id', $planning->cours_id) == $course->id) selected @endif>
+                                        @if(old('course_id', $planning->course_id) == $course->id) selected @endif>
                                         {{ $course->intitule }}
                                     </option>
                                     @endforeach
                                 </select>
 
-                                @error('cours_id')
+                                @error('course_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

@@ -18,8 +18,8 @@ class CreateSchedulesTable extends Migration
             $table->dateTime('date_debut');
             $table->dateTime('date_fin');
             $table->timestamps();
-            $table->foreignId('cours_id');
-            $table->foreign('cours_id')->references('id')->on('cours');;
+            $table->foreignId('course_id');
+            $table->foreign('course_id')->references('id')->on('cours');;
         });
     }
 

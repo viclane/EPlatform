@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => "Affichage du cours {$course->intitule}"])
+@extends('layouts.app', ['title' => "Course display {$course->title}"])
 
 @section('content')
     <div class="container">
@@ -6,52 +6,52 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex">
-                        Details du cours
+                        Course details
 
                         <div class="ml-auto">
 
-                            <a href="{{ route('admin.plannings.create', ['course_id' => $course->id]) }}" class="btn btn-outline-primary">
+                            <a href="{{ route('admin.schedules.create', ['course_id' => $course->id]) }}" class="btn btn-outline-primary">
                                 <i class="fa fa-plus"></i>
-                                Ajouter un planning
+                                Add a schedule
                             </a>
 
                             <a href="{{ route('admin.courses.edit', ['course' => $course->id]) }}" class="btn btn-primary">
                                 <i class="fa fa-pen"></i>
-                                Editer
+                                Edit
                             </a>
                         </div>
                     </div>
                     <div class="card-body">
-                        Intitule: {{ $course->intitule }}
+                        Title: {{ $course->title }}
                         <br/>
-                        Enseignant: @if($course->enseignant)
-                        <a href="{{ route('admin.users.show', ['user' => $course->enseignant->id]) }}">
-                            {{ $course->enseignant->full_name }}
+                        Instructor: @if($course->instructor)
+                        <a href="{{ route('admin.users.show', ['user' => $course->instructor->id]) }}">
+                            {{ $course->instructor->full_name }}
                         </a>
                         @else
-                        Non assigné
+                        Not assigned
                         @endif
                         <br/>
                         Formation: @if($course->formation)
                         <a href="{{ route('admin.formations.show', ['formation' => $course->formation->id]) }}">
-                            {{ $course->formation->intitule }}
+                            {{ $course->formation->title }}
                         </a>
                         @else
-                        Non assigné
+                        Not assigned
                         @endif
                         <br/>
                         @php
-                            $count = $course->etudiants->count();
+                            $count = $course->students->count();
                         @endphp
                         @if ($count)
                         <p>
-                            {{ $count }} etudiants inscrits dans ce cours
+                            {{ $count }} students enrolled in this course
                         </p>
                         <ul>
-                        @foreach ($course->etudiants as $etudiant)
+                        @foreach ($course->students as $student)
                             <li class="">
-                                <a href="{{ route('admin.users.show', ['user' => $etudiant->id]) }}">
-                                    {{ $etudiant->full_name }}
+                                <a href="{{ route('admin.users.show', ['user' => $student->id]) }}">
+                                    {{ $student->full_name }}
                                 </a>
                             </li>
                         @endforeach
