@@ -8,7 +8,7 @@
                     <div class="card-header d-flex">
                         Details du schedule
 
-                        <a href="{{ route('instructors.schedules.edit', ['schedule' => $schedule->id]) }}" class="ml-auto btn btn-primary">
+                        <a href="{{ route('admin.schedules.edit', ['schedule' => $schedule->id]) }}" class="ml-auto btn btn-primary">
                             <i class="fa fa-pen"></i>
                             Editer
                         </a>
@@ -19,7 +19,7 @@
                         Date de end: {{ $schedule->date_fin }}
                         <br/>
                         Cours:
-                        <a href="{{ route('instructors.courses.show', ['course' => $schedule->course->id]) }}">
+                        <a href="{{ route('admin.courses.show', ['course' => $schedule->course->id]) }}">
                             {{ $schedule->course->intitule }}
                         </a>
                         <br/>

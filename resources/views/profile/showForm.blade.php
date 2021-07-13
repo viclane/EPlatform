@@ -118,7 +118,7 @@
                             </div>
                         </div>
 
-                        <input type="hidden" name="request_type" value="etudiant">
+                        <input type="hidden" name="request_type" value="student">
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

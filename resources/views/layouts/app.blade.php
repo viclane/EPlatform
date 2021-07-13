@@ -48,7 +48,7 @@
                                 <li class="nav-item">
                                     <a href="{{ route('students.courses') }}"
                                         class="nav-link @if (request()->is('students/courses*')) active @endif">
-                                        Course
+                                        Courses
                                     </a>
                                 </li>
 
@@ -71,7 +71,7 @@
                                 <li class="nav-item">
                                     <a href="{{ route('instructors.courses') }}"
                                         class="nav-link @if (request()->is('instructors/courses*')) active @endif">
-                                        Course
+                                        Courses
                                     </a>
                                 </li>
 
@@ -117,12 +117,12 @@
                                 <li class="nav-item">
                                     <a href="{{ route('admin.courses.index') }}"
                                     class="nav-link @if (request()->is('admin/courses*')) active @endif">
-                                        Course
+                                        Courses
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('admin.schedules.index') }}"
-                                    class="nav-link @if (request()->is('admin/plannings*')) active @endif">
+                                    class="nav-link @if (request()->is('admin/schedules*')) active @endif">
                                         Schedules
                                     </a>
                                 </li>

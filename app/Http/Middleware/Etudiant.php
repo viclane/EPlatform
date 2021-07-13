@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Etudiant
+class student
 {
     /**
      * Handle an incoming request.
@@ -20,7 +20,7 @@ class Etudiant
             return redirect(url('login'));
         }
 
-        if ($request->user() && !$request->user()->is_etudiant) {
+        if ($request->user() && !$request->user()->is_student) {
             return redirect(url('not_authorize'));
         }
 

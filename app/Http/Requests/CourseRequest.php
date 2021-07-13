@@ -7,7 +7,7 @@ use App\Models\User;
 
 class CourseRequest extends BaseRequest
 {
-    protected $etudiants_array = [];
+    protected $students_array = [];
     protected $active_course = null;
 
     /**
@@ -26,8 +26,8 @@ class CourseRequest extends BaseRequest
             'formation_id' => 'nullable|exists:formations,id',
             'user_id' => ['nullable', 'exists:users,id', function ($attribute, $value, $fail) {
                 $user = User::find($value);
-                if ($user && !$user->is_enseignant) {
-                    $fail('L\'utilisateur renseigne n\'est pas un enseignant');
+                if ($user && !$user->is_instructor) {
+                    $fail('L\'utilisateur renseigne n\'est pas un instructor');
                 }
             }],
             'intitule' => ['required', 'string', function ($attribute, $value, $fail) use ($formation_id, $course_id) {
@@ -38,15 +38,15 @@ class CourseRequest extends BaseRequest
                     $fail('Ce cours existe deja dans cette formation');
                 }
             }],
-            'etudiants' => ['nullable', function ($attribute, $value, $fail) use ($course) {
+            'students' => ['nullable', function ($attribute, $value, $fail) use ($course) {
                 foreach ($value as $item) {
-                    $etudiant = User::find($item);
-                    if (!$etudiant) {
-                        $fail('Un ou plusieurs etudiants inexistant(s)');
-                    } else if (!$etudiant->is_etudiant || !$etudiant->formation_id || ($etudiant->formation_id != $course->formation_id)) {
-                        $fail('Certains etudiants ne peuvent avoir acces a ce cours');
+                    $student = User::find($item);
+                    if (!$student) {
+                        $fail('Un ou plusieurs students inexistant(s)');
+                    } else if (!$student->is_student || !$student->formation_id || ($student->formation_id != $course->formation_id)) {
+                        $fail('Certains students ne peuvent avoir acces a ce cours');
                     } else {
-                        $this->etudiants_array[] = $etudiant;
+                        $this->students_array[] = $student;
                     }
                 }
             }]
@@ -57,12 +57,12 @@ class CourseRequest extends BaseRequest
     public function getNewUsers()
     {
         if ($this->active_course) {
-            $course_etudiants = $this->active_course->etudiants()->pluck('id')->toArray();
-            return array_filter($this->etudiants_array, function ($course) use ($course_etudiants) {
-                return !in_array($course->id, $course_etudiants);
+            $course_students = $this->active_course->students()->pluck('id')->toArray();
+            return array_filter($this->students_array, function ($course) use ($course_students) {
+                return !in_array($course->id, $course_students);
             });
         }
 
-        return $this->etudiants_array;
+        return $this->students_array;
     }
 }

@@ -18,10 +18,10 @@
                                 <input type="text" name="query" class="form-control mr-2 mb-2" value="{{ old('query', $query ?? '') }}"/>
                                 <div class="form-group mr-2 mb-2">
                                     <select class="form-control" name="instructor_id">
-                                        <option value="" @if($active_instructor == null) selected @endif>All $instructors</option>
+                                        <option value="" @if($active_instructor == null) selected @endif>All instructors</option>
                                         <option value="no" @if($active_instructor == 'no') selected @endif>Not assigned </option>
                                         @foreach ($instructors as $instructor)
-                                            <option value="{{ $instructor->id }}" @if($active_enseignant && $active_instructor!= 'no' && $active_instructor->id == $instructor->id) selected @endif>
+                                            <option value="{{ $instructor->id }}" @if($active_instructor && $active_instructor!= 'no' && $active_instructor->id == $instructor->id) selected @endif>
                                                 {{ $instructor->full_name }}
                                             </option>
                                         @endforeach
@@ -74,7 +74,7 @@
                                             <i class="fa fa-eye"></i>
                                             View
                                         </a>
-                                        <a href="{{ route('admin.plannings.index', ['course_id' => $course->id]) }}" class="btn btn-outline-danger btn-sm mr-1 mb-1">
+                                        <a href="{{ route('admin.schedules.index', ['course_id' => $course->id]) }}" class="btn btn-outline-danger btn-sm mr-1 mb-1">
                                             <i class="fa fa-eye"></i>
                                             View a schedule
                                         </a>

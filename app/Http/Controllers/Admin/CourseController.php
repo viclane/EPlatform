@@ -100,7 +100,7 @@ class CourseController extends Controller
         $data = $request->all();
 
         if ($course->update($data)) {
-            $course->students()->sync($request->students;
+            $course->students()->sync($request->get('students'));
             $course->save();
             return redirect()->route('admin.courses.index')->with(['success' => 'The course has been modified !']);
         }

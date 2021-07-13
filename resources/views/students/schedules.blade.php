@@ -67,7 +67,7 @@
                             @foreach ($schedules as $schedule)
                                 <tr>
                                     <td>{{ $schedule->course->intitule }}</td>
-                                    <td>{{ $schedule->date_debut }}</td>
+                                    <td>{{ $schedule->date_start }}</td>
                                     <td>{{ $schedule->date_fin }}</td>
                                     <td class="pb-2" style="width: 25%;">
                                         <a href="{{ route('students.courses.show', ['course' => $schedule->course->id]) }}" class="btn btn-primary btn-sm mr-1 mb-1">

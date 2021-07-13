@@ -28,7 +28,7 @@ class Schedule extends Model
         return $this->belongsTo(Course::class, 'course_id');
     }
 
-    public function getDebutDateAttribute()
+    public function getStartDateAttribute()
     {
         return $this->start_date
             ? $this->start_date->format('Y-m-d')
@@ -42,7 +42,7 @@ class Schedule extends Model
             : null;
     }
 
-    public function getDebutHeureAttribute()
+    public function getStartHeureAttribute()
     {
         return $this->start_date
             ? $this->start_date->format('H:i')

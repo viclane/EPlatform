@@ -31,7 +31,7 @@
                                 <tr>
                                     <th scope="col">Intitule de la formation</th>
                                     <th scope="col">Nombre de cours</th>
-                                    <th scope="col">Nombre d'etudiants</th>
+                                    <th scope="col">Nombre d'students</th>
                                     <th scope="col" style="width: 25%;">Actions</th>
                                 </tr>
                             </thead>
@@ -40,7 +40,7 @@
                                 <tr>
                                     <td>{{ $formation->intitule }}</td>
                                     <td>{{ $formation->courses->count() }}</td>
-                                    <td>{{ $formation->etudiants->count() }}</td>
+                                    <td>{{ $formation->students->count() }}</td>
                                     <td class="pb-2" style="width: 25%;">
                                         <a href="{{ route('admin.formations.show', ['formation' => $formation->id]) }}" class="btn btn-primary btn-sm mr-1 mb-1">
                                             <i class="fa fa-eye"></i>

@@ -1,7 +1,7 @@
 changement de mot de passe (done)
 modification du nom et prenom (done)
 Acceptation des users/refus des users (done)
-Affectation d'un enseignant a un cours (done)
+Affectation d'un instructor a un cours (done)
 crud cours (done)
 crud formations (done)
 
@@ -10,16 +10,16 @@ desinscription (done)
 liste cours inscrits (done)
 lister cours de la formation (done)
 
-enseignants voir ses cours (done)
-crud plannings (done)
+instructors voir ses cours (done)
+crud schedules (done)
 
-search params pour etudiants, pour enseignants (done)
-Enseignant modifie (done)
+search params pour students, pour instructors (done)
+instructor modifie (done)
 par cours / par semaine (done)
 
 Afficher cours non assigne (done)
 
-Planning: etudiants (done)
-Planning: enseignants (done)
+Schedule: students (done)
+Schedule: instructors (done)
 
-Planning: Admin (done)
+Schedule: Admin (done)

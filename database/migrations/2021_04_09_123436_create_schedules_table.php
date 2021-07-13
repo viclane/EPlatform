@@ -15,7 +15,7 @@ class CreateSchedulesTable extends Migration
     { // du prof ? Yep
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('date_debut');
+            $table->dateTime('date_start');
             $table->dateTime('date_fin');
             $table->timestamps();
             $table->foreignId('course_id');
@@ -30,6 +30,6 @@ class CreateSchedulesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('plannings');
+        Schema::dropIfExists('schedules');
     }
 }

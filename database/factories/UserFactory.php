@@ -26,7 +26,7 @@ class UserFactory extends Factory
             'nom' => $this->faker->lastName,
             'prenom' => $this->faker->firstName,
             'login' => $this->faker->unique()->safeEmail,
-            'type' => $this->faker->randomElement([null, 'etudiant', 'enseignant']),
+            'type' => $this->faker->randomElement([null, 'student', 'instructor']),
             'mdp' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         ];
     }

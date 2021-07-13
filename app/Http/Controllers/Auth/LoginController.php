@@ -59,10 +59,10 @@ class LoginController extends Controller
         if ($user->isAdmin) {
             return redirect()->route('admin.index')->with($data);
         }
-        if ($user->isEnseignant) {
+        if ($user->isinstructor) {
             return redirect()->route('instructors.index')->with($data);
         }
-        if ($user->isEtudiant) {
+        if ($user->isstudent) {
             return redirect()->route('students.index')->with($data);
         }
 

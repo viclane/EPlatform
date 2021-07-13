@@ -22,7 +22,7 @@
                         <br>
                         Type: {{ $user->type }}
                         <br>
-                        @if ($user->is_etudiant && $user->formation)
+                        @if ($user->is_student && $user->formation)
                         Formation: <a href="{{ route('admin.formations.show', ['formation' => $user->formation->id]) }}">{{ $user->formation->intitule }}</a>
                         @endif
 
@@ -31,9 +31,9 @@
                         @php
                             $count = $user->courses->count();
                         @endphp
-                        @if ($count && ($user->is_etudiant || $user->is_enseignant))
+                        @if ($count && ($user->is_student || $user->is_instructor))
                             <p>
-                                @if ($user->is_etudiant)
+                                @if ($user->is_student)
                                 est inscrit à
                                 @else
                                 est assigné à

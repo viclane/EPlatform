@@ -11,8 +11,6 @@ class Course extends Model
 {
     use HasFactory;
 
-    protected $table = 'cours';
-
     protected $fillable = [
         'intitule',
         'user_id',
@@ -32,7 +30,7 @@ class Course extends Model
 
     public function students()
     {
-        return $this->belongsToMany(User::class, 'cours_users', 'course_id', 'user_id');
+        return $this->belongsToMany(User::class, 'user_course', 'course_id', 'user_id');
     }
 
     public function formation()
@@ -42,7 +40,7 @@ class Course extends Model
 
     public function schedules()
     {
-        return $this->hasMany(Planning::class, 'course_id');
+        return $this->hasMany(Schedule::class, 'course_id');
     }
 
     public function getStatDatasAttribute()

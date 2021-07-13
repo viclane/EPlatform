@@ -4,7 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Cours;
 use App\Models\Course;
-use App\Models\Planning;
+use App\Models\Schedule;
 use App\Models\User;
 use Carbon\Carbon;
 
@@ -55,11 +55,11 @@ class CourseRepository
     /**
      * Juste accessible a l'administrateur
      */
-    public function getCoursesPlannings(
+    public function getCoursesSchedules(
         $course = null,
-        $dateDebut = null,
+        $dateStart = null,
         $dateFin = null,
-        $orderColumn = 'date_debut',
+        $orderColumn = 'date_start',
         $order = 'DESC',
         $dateFormat = 'Y-m-d H:i'
     ) {
@@ -72,20 +72,20 @@ class CourseRepository
                 throw new \Exception('Invalid course');
             }
 
-            $plannings = $course->plannings->all();
+            $schedules = $course->schedules->all();
         } else {
-            $plannings = Planning::all();
+            $schedules = Schedule::all();
         }
 
-        return self::planningsFilter($plannings, $dateDebut, $dateFin, false, $orderColumn, $order, $dateFormat);
+        return self::schedulesFilter($schedules, $dateStart, $dateFin, false, $orderColumn, $order, $dateFormat);
     }
 
-    public function getUserCoursesPlannings(
+    public function getUserCoursesSchedules(
         $course = null,
-        $dateDebut = null,
+        $dateStart = null,
         $dateFin = null,
         $user = null,
-        $orderColumn = 'date_debut',
+        $orderColumn = 'date_start',
         $order = 'DESC',
         $dateFormat = 'Y-m-d H:i'
     ) {
@@ -95,44 +95,44 @@ class CourseRepository
             abort(500);
         }
 
-        if ($user->is_enseignant || $user->is_etudiant) {
-            $plannings = [];
+        if ($user->is_instructor || $user->is_student) {
+            $schedules = [];
 
             if ($course) {
                 if (!($course instanceof Course)) {
                     throw new \Exception('Invalid course');
                 }
 
-                $plannings = $course->plannings->all();
+                $schedules = $course->schedules->all();
             } else {
-                foreach ($user->courses->pluck('plannings')->all() as $course_plannings) {
-                    $plannings = array_merge($plannings, $course_plannings->all());
+                foreach ($user->courses->pluck('schedules')->all() as $course_schedules) {
+                    $schedules = array_merge($schedules, $course_schedules->all());
                 }
             }
 
-            return self::planningsFilter($plannings, $dateDebut, $dateFin, false, $orderColumn, $order, $dateFormat);
+            return self::schedulesFilter($schedules, $dateStart, $dateFin, false, $orderColumn, $order, $dateFormat);
         }
 
         return null;
     }
 
-    public static function planningsFilter(
-        $plannings,
-        $dateDebut = null,
+    public static function schedulesFilter(
+        $schedules,
+        $dateStart = null,
         $dateFin = null,
         $strict = false,
-        $orderColumn = 'date_debut',
+        $orderColumn = 'date_start',
         $order = 'DESC',
         $dateFormat = 'Y-m-d H:i'
     ) {
         $order = in_array(strtolower($order), ['asc', 'desc']) ? $order : 'DESC';
-        $orderColumn = in_array($orderColumn, ['date_debut', 'date_fin']) ? $orderColumn : 'date_debut';
+        $orderColumn = in_array($orderColumn, ['date_start', 'date_fin']) ? $orderColumn : 'date_start';
 
-        $plannings = collect($plannings);
+        $schedules = collect($schedules);
 
-        if ($dateDebut) {
-            $date = $strict ? $dateDebut : $dateDebut . ' 00:00';
-            $dateDebut = Carbon::createFromFormat($dateFormat, $date)->getTimestamp();
+        if ($dateStart) {
+            $date = $strict ? $dateStart : $dateStart . ' 00:00';
+            $dateStart = Carbon::createFromFormat($dateFormat, $date)->getTimestamp();
         }
 
         if ($dateFin) {
@@ -140,12 +140,12 @@ class CourseRepository
             $dateFin = Carbon::createFromFormat($dateFormat, $date)->getTimestamp();
         }
 
-        $plannings = $plannings->filter(function ($value, $key) use ($dateDebut, $dateFin) {
+        $schedules = $schedules->filter(function ($value, $key) use ($dateStart, $dateFin) {
             $result = true;
-            $timestamp = $value->date_debut->getTimestamp();
+            $timestamp = $value->date_start->getTimestamp();
 
-            if ($dateDebut) {
-                $result = $timestamp >= $dateDebut;
+            if ($dateStart) {
+                $result = $timestamp >= $dateStart;
             }
 
             if ($result && $dateFin) {
@@ -156,7 +156,7 @@ class CourseRepository
         });
 
         return $order == 'DESC'
-            ? $plannings->sortByDesc($orderColumn)
-            : $plannings->sortBy($orderColumn);
+            ? $schedules->sortByDesc($orderColumn)
+            : $schedules->sortBy($orderColumn);
     }
 }

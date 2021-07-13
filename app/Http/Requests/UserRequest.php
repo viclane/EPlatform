@@ -25,7 +25,7 @@ class UserRequest extends BaseRequest
             'nom' => $this->sometimes . 'required|string|max:40',
             'prenom' => $this->sometimes . 'required|string|max:40',
             'login' => $this->sometimes . 'required|email|' . $unique_login,
-            'formation_id' => ['required_if:type,etudiant'],
+            'formation_id' => ['required_if:type,student'],
             'password' => [
                 $this->sometimes == '' ? 'required' : 'nullable',
                 'confirmed'
@@ -35,7 +35,7 @@ class UserRequest extends BaseRequest
                     $course = Course::find($item);
                     if (!$course) {
                         $fail('Un ou plusieurs cours inexistant(s)');
-                    } else if ($course->user_id && (!$user || ($user->is_enseignant && $course->user_id != $user->id))) {
+                    } else if ($course->user_id && (!$user || ($user->is_instructor && $course->user_id != $user->id))) {
                         $fail('Le cours a deja ete attribue');
                     } else {
                         $this->courses_array[] = $course;

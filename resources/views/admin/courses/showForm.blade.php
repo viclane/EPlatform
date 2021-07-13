@@ -43,7 +43,7 @@
                                     class="form-control @error('formation_id') is-invalid @enderror">
                                     <option value="" @if(old('formation_id', $course->formation_id) == null) selected @endif>Aucune formation</option>
                                     @foreach($formations as $formation)
-                                    <option value="{{ $formation->id }}" data-etudiants="{{ $formation->etudiants }}"
+                                    <option value="{{ $formation->id }}" data-students="{{ $formation->students }}"
                                         @if(old('formation_id', $course->formation_id) == $formation->id) selected @endif>
                                         {{ $formation->intitule }}
                                     </option>
@@ -59,15 +59,15 @@
 
                             <div class="form-group">
                                 <label for="user_id">
-                                    {{ __('Enseignant') }}
+                                    {{ __('instructor') }}
                                 </label>
 
                                 <select name="user_id" id="user_id"
                                     class="form-control @error('user_id') is-invalid @enderror">
-                                    <option value="" @if(old('user_id', $course->user_id) == null) selected @endif>Aucun enseignant</option>
-                                    @foreach($enseignants as $enseignant)
-                                    <option value="{{ $enseignant->id }}" @if(old('user_id', $course->user_id) == $enseignant->id) selected @endif>
-                                        {{ $enseignant->full_name }}
+                                    <option value="" @if(old('user_id', $course->user_id) == null) selected @endif>Aucun instructor</option>
+                                    @foreach($instructors as $instructor)
+                                    <option value="{{ $instructor->id }}" @if(old('user_id', $course->user_id) == $instructor->id) selected @endif>
+                                        {{ $instructor->full_name }}
                                     </option>
                                     @endforeach
                                 </select>
@@ -96,16 +96,16 @@
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="etudiants">Choisir les etudiants</label>
+                                <label for="students">Choisir les students</label>
                                 @php
-                                    $etudiants_array = $course->etudiants->pluck('id')->toArray();
+                                    $students_array = $course->students->pluck('id')->toArray();
                                 @endphp
-                                <select id="etudiants" name="etudiants[]" class="form-control" multiple>
-                                    <option value="" disabled>Choisir les etudiants</option>
+                                <select id="students" name="students[]" class="form-control" multiple>
+                                    <option value="" disabled>Choisir les students</option>
                                     @if ($course->formation)
-                                        @foreach ($course->formation->etudiants as $etudiant)
-                                        <option value="{{ $etudiant->id }}"
-                                            @if (in_array($etudiant->id, old('etudiants', $etudiants_array))) selected @endif>{{ $etudiant->full_name }}</option>
+                                        @foreach ($course->formation->students as $student)
+                                        <option value="{{ $student->id }}"
+                                            @if (in_array($student->id, old('students', $students_array))) selected @endif>{{ $student->full_name }}</option>
                                         @endforeach
                                     @endif
                                 </select>

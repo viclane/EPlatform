@@ -9,7 +9,7 @@
                 <div class="card-header d-flex">
                     @php
                     $title = 'Liste des utilisateurs';
-                    $title = $type ? $type == 'enseignant' ? 'Liste des enseignants' : 'Liste des etudiants' : $title;
+                    $title = $type ? $type == 'instructor' ? 'Liste des instructors' : 'Liste des students' : $title;
                     @endphp
 
                     {{ $title }}
@@ -21,10 +21,10 @@
                             <div class="form-group mr-2 mb-2">
                                 <select class="form-control" name="type">
                                     <option value="" @if($type == null) selected @endif>Tout le monde</option>
-                                    <option value="enseignant" @if($type == 'enseignant') selected @endif>
-                                        Enseignants
+                                    <option value="instructor" @if($type == 'instructor') selected @endif>
+                                        instructors
                                     </option>
-                                    <option value="etudiant" @if($type == 'etudiant') selected @endif>
+                                    <option value="student" @if($type == 'student') selected @endif>
                                         Étudiants
                                     </option>
                                 </select>

@@ -15,8 +15,8 @@
                                 <div class="form-group mr-2 mb-2">
                                     <select class="form-control" name="type">
                                         <option value="" @if($type == null) selected @endif>Tout le monde</option>
-                                        <option value="enseignant" @if($type == 'enseignant') selected @endif>Enseignants</option>
-                                        <option value="etudiant" @if($type == 'etudiant') selected @endif>Étudiants</option>
+                                        <option value="instructor" @if($type == 'instructor') selected @endif>instructors</option>
+                                        <option value="student" @if($type == 'student') selected @endif>Étudiants</option>
                                     </select>
                                 </div>
                             <button type="submit" class="btn btn-primary mb-2">Search</button>
@@ -49,7 +49,7 @@
                             <tr>
                                 <td>{{ $user->full_name }}</td>
                                 <td>{{ $user->login }}</td>
-                                <td>{{ $user->formation_id ? 'etudiant' : 'enseignant' }}</td>
+                                <td>{{ $user->formation_id ? 'student' : 'instructor' }}</td>
                                 <td>{{ $user->formation ? $user->formation->intitule : '' }}</td>
                                 <td class="pb-2" style="width: 25%;">
                                     <a href="{{ route('admin.users.show', ['user' => $user->id]) }}" class="btn btn-primary btn-sm mr-1 mb-1">
@@ -60,7 +60,7 @@
                                           class="d-inline-block">
                                         @csrf
                                         @method('PUT')
-                                        <input type="hidden" name="type" value="{{ $user->formation_id ? 'etudiant' : 'enseignant' }}"/>
+                                        <input type="hidden" name="type" value="{{ $user->formation_id ? 'student' : 'instructor' }}"/>
                                         <input type="hidden" name="formation_id" value="{{ $user->formation_id }}"/>
                                         <button type="submit" class="btn btn-outline-success btn-sm mr-1 mb-1">
                                             <i class="fa fa-check"></i>

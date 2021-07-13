@@ -60,14 +60,14 @@ class UserRepository
         return $query;
     }
 
-    public function getEnseignants()
+    public function getinstructors()
     {
-        return $this->newQuery()->where('type', 'enseignant')->get();
+        return $this->newQuery()->where('type', 'instructor')->get();
     }
 
-    public function getEtudiants()
+    public function getstudents()
     {
-        return $this->newQuery()->where('type', 'etudiant')->get();
+        return $this->newQuery()->where('type', 'student')->get();
     }
 
     public function all()

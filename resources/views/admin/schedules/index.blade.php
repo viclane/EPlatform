@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Liste des plannings'])
+@extends('layouts.app', ['title' => 'Liste des schedules'])
 
 @section('content')
     <div class="container">
@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex">
-                        Liste des plannings
+                        Liste des schedules
 
                         @if ($active_user)
                             de {{ $active_user->full_name }}
@@ -19,10 +19,10 @@
                         <div class="col-md-6 ml-auto">
                             <form action="" method="get" class="form-inline">
                                 <div class="form-group">
-                                    <label for="date_debut">Date debut</label>
-                                    <input type="date" placeholder="dd/mm/yyyy" id="date_debut" name="date_debut"
-                                        class="form-control mx-2 mb-2 @error('date_debut') is-invalid @endif"
-                                        value="{{ old('date_debut', $date_debut ?? '') }}"/>
+                                    <label for="date_start">Date start</label>
+                                    <input type="date" placeholder="dd/mm/yyyy" id="date_start" name="date_start"
+                                        class="form-control mx-2 mb-2 @error('date_start') is-invalid @endif"
+                                        value="{{ old('date_start', $date_start ?? '') }}"/>
                                     @error('date_fin')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -56,9 +56,9 @@
                         </div>
 
                         <div class="ml-auto">
-                            <a href="{{ route('admin.plannings.create') }}" class="btn btn-outline-primary">
+                            <a href="{{ route('admin.schedules.create') }}" class="btn btn-outline-primary">
                                 <i class="fa fa-plus"></i>
-                                Ajouter un planning
+                                Ajouter un schedule
                             </a>
                         </div>
                     </div>
@@ -70,27 +70,27 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Nom du cours</th>
-                                    <th scope="col">Date de debut</th>
-                                    <th scope="col">Date de fin</th>
+                                    <th scope="col">Date de start</th>
+                                    <th scope="col">Date de end</th>
                                     <th scope="col" style="width: 25%;">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach ($plannings as $planning)
+                            @foreach ($schedules as $schedule)
                                 <tr>
-                                    <td>{{ $planning->course->intitule }}</td>
-                                    <td>{{ $planning->date_debut }}</td>
-                                    <td>{{ $planning->date_fin }}</td>
+                                    <td>{{ $schedule->course->intitule }}</td>
+                                    <td>{{ $schedule->date_start }}</td>
+                                    <td>{{ $schedule->date_fin }}</td>
                                     <td class="pb-2" style="width: 25%;">
-                                        <a href="{{ route('admin.plannings.show', ['planning' => $planning->id]) }}" class="btn btn-primary btn-sm mr-1 mb-1">
+                                        <a href="{{ route('admin.schedules.show', ['schedule' => $schedule->id]) }}" class="btn btn-primary btn-sm mr-1 mb-1">
                                             <i class="fa fa-eye"></i>
                                             Voir
                                         </a>
-                                        <a href="{{ route('admin.plannings.edit', ['planning' => $planning->id]) }}" class="btn btn-secondary btn-sm mr-1 mb-1">
+                                        <a href="{{ route('admin.schedules.edit', ['schedule' => $schedule->id]) }}" class="btn btn-secondary btn-sm mr-1 mb-1">
                                             <i class="fa fa-pen"></i>
                                             Modifier
                                         </a>
-                                        <form action="{{ route('admin.plannings.destroy', ['planning' => $planning->id]) }}" method="POST"
+                                        <form action="{{ route('admin.schedules.destroy', ['schedule' => $schedule->id]) }}" method="POST"
                                               class="d-inline-block">
                                             @csrf
                                             @method('DELETE')

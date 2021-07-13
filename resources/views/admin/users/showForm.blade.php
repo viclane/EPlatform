@@ -18,7 +18,7 @@
         @endif
         <div class="container">
             <div class="row">
-                <div class="col-md-8 {{ $user->is_enseignant ? '' : 'mx-auto' }}">
+                <div class="col-md-8 {{ $user->is_instructor ? '' : 'mx-auto' }}">
                     <div class="card">
                         <div class="card-header">
                             {{ $editing ? 'Modifier '.$user->full_name : 'Ajouter un utilisateur' }}
@@ -66,11 +66,11 @@
                                     <option value="admin" @if(old('type', $user->type) == 'admin') selected @endif>
                                         Admin
                                     </option>
-                                    <option value="etudiant" @if(old('type', $user->type) == 'etudiant' || $user->formation_id) selected @endif>
-                                        Etudiant
+                                    <option value="student" @if(old('type', $user->type) == 'student' || $user->formation_id) selected @endif>
+                                        student
                                     </option>
-                                    <option value="enseignant" @if(old('type', $user->type) == 'enseignant') selected @endif>
-                                        Enseignant
+                                    <option value="instructor" @if(old('type', $user->type) == 'instructor') selected @endif>
+                                        instructor
                                     </option>
                                 </select>
 
@@ -85,7 +85,7 @@
                                 <label for="formation_id">
                                     {{ __('Formation') }}
                                     <small>
-                                        (Ne selectionner que si l'utilisateur est un etudiant)
+                                        (Ne selectionner que si l'utilisateur est un student)
                                     </small>
                                 </label>
 
@@ -137,11 +137,11 @@
                     </div>
                 </div>
 
-                @if ($user->is_enseignant || $user->is_etudiant)
+                @if ($user->is_instructor || $user->is_student)
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">
-                            {{ $user->is_etudiant ? 'Inscrire l\'etudiant a des cours ' : 'Ajouter des cours a l\'enseignant' }}
+                            {{ $user->is_student ? 'Inscrire l\'student a des cours ' : 'Ajouter des cours a l\'instructor' }}
                         </div>
                         <div class="card-body">
                             @include('admin.partials.addCourses', [

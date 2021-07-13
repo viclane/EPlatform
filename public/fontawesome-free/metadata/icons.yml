@@ -15757,7 +15757,7 @@ ruler:
       - draft
       - length
       - measure
-      - planning
+      - schedule
   styles:
     - solid
   unicode: f545
@@ -15772,7 +15772,7 @@ ruler-combined:
       - draft
       - length
       - measure
-      - planning
+      - schedule
   styles:
     - solid
   unicode: f546
@@ -15787,7 +15787,7 @@ ruler-horizontal:
       - draft
       - length
       - measure
-      - planning
+      - schedule
   styles:
     - solid
   unicode: f547
@@ -15802,7 +15802,7 @@ ruler-vertical:
       - draft
       - length
       - measure
-      - planning
+      - schedule
   styles:
     - solid
   unicode: f548

@@ -3,8 +3,8 @@
 namespace App\Http;
 
 use App\Http\Middleware\Admin;
-use App\Http\Middleware\Enseignant;
-use App\Http\Middleware\Etudiant;
+use App\Http\Middleware\instructor;
+use App\Http\Middleware\student;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -66,7 +66,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \App\Http\Middleware\EnsureUserIsVerified::class,
         'is_admin' => Admin::class,
-        'is_etudiant' => Etudiant::class,
-        'is_enseignant' => Enseignant::class,
+        'is_student' => student::class,
+        'is_instructor' => instructor::class,
     ];
 }
