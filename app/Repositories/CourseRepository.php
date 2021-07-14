@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Cours;
+
 use App\Models\Course;
 use App\Models\Schedule;
 use App\Models\User;
@@ -59,7 +59,7 @@ class CourseRepository
         $course = null,
         $dateStart = null,
         $dateFin = null,
-        $orderColumn = 'date_start',
+        $orderColumn = 'start_date',
         $order = 'DESC',
         $dateFormat = 'Y-m-d H:i'
     ) {
@@ -85,7 +85,7 @@ class CourseRepository
         $dateStart = null,
         $dateFin = null,
         $user = null,
-        $orderColumn = 'date_start',
+        $orderColumn = 'start_date',
         $order = 'DESC',
         $dateFormat = 'Y-m-d H:i'
     ) {
@@ -121,12 +121,12 @@ class CourseRepository
         $dateStart = null,
         $dateFin = null,
         $strict = false,
-        $orderColumn = 'date_start',
+        $orderColumn = 'start_date',
         $order = 'DESC',
         $dateFormat = 'Y-m-d H:i'
     ) {
         $order = in_array(strtolower($order), ['asc', 'desc']) ? $order : 'DESC';
-        $orderColumn = in_array($orderColumn, ['date_start', 'date_fin']) ? $orderColumn : 'date_start';
+        $orderColumn = in_array($orderColumn, ['start_date', 'end_date']) ? $orderColumn : 'start_date';
 
         $schedules = collect($schedules);
 
@@ -142,7 +142,7 @@ class CourseRepository
 
         $schedules = $schedules->filter(function ($value, $key) use ($dateStart, $dateFin) {
             $result = true;
-            $timestamp = $value->date_start->getTimestamp();
+            $timestamp = $value->start_date->getTimestamp();
 
             if ($dateStart) {
                 $result = $timestamp >= $dateStart;

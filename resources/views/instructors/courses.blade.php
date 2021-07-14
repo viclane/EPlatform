@@ -39,7 +39,7 @@
                             <tbody>
                             @foreach ($courses as $course)
                                 <tr>
-                                    <td>{{ $course->intitule }}</td>
+                                    <td>{{ $course->title }}</td>
                                     <td>{{ $course->students->count() }}</td>
                                     <td>{{ $course->stat_datas['passed'] }}</td>
                                     <td>{{ $course->stat_datas['coming'] }}</td>
@@ -48,12 +48,12 @@
                                             class="btn btn-primary btn-sm mr-1 mb-1">
                                             <i class="fa fa-eye"></i>
                                             
-                                                See
+                                                View
                                         </a>
                                         <a href="{{ route('instructors.schedules.index', ['course_id' => $course->id]) }}"
                                             class="btn btn-secondary btn-sm mr-1 mb-1">
                                             <i class="fa fa-clock"></i>
-                                            See a schedule
+                                            View a schedule
                                         </a>
                                         <a href="{{ route('instructors.schedules.create', ['course_id' => $course->id]) }}"
                                             class="btn btn-warning btn-sm mr-1 mb-1">

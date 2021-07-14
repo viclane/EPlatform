@@ -25,9 +25,9 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="title">title</label>
-                                <input type="text" name="intitule" id="intitule" value="{{ old('intitule', $course->intitule) }}" class="form-control @error('intitule') is-invalid @enderror" required>
+                                <input type="text" name="title" id="title" value="{{ old('title', $course->title) }}" class="form-control @error('title') is-invalid @enderror" required>
 
-                                @error('intitule')
+                                @error('title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -45,7 +45,7 @@
                                     @foreach($formations as $formation)
                                     <option value="{{ $formation->id }}" data-students="{{ $formation->students }}"
                                         @if(old('formation_id', $course->formation_id) == $formation->id) selected @endif>
-                                        {{ $formation->intitule }}
+                                        {{ $formation->title }}
                                     </option>
                                     @endforeach
                                 </select>
@@ -64,7 +64,7 @@
 
                                 <select name="user_id" id="user_id"
                                     class="form-control @error('user_id') is-invalid @enderror">
-                                    <option value="" @if(old('user_id', $course->user_id) == null) selected @endif>Aucun instructor</option>
+                                    <option value="" @if(old('user_id', $course->user_id) == null) selected @endif>No instructor</option>
                                     @foreach($instructors as $instructor)
                                     <option value="{{ $instructor->id }}" @if(old('user_id', $course->user_id) == $instructor->id) selected @endif>
                                         {{ $instructor->full_name }}
@@ -81,7 +81,7 @@
 
                             <div class="d-flex justify-content-between">
                                 <button class="btn btn-success" type="submit">
-                                    {{ $editing ? 'Modifier' : 'Ajouter' }}
+                                    {{ $editing ? 'Edit' : 'Add' }}
                                 </button>
                                 <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
@@ -92,11 +92,11 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">
-                            Ajouter des cours a la formation
+                            Add courses in the formation
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="students">Choisir les students</label>
+                                <label for="students">Choose the students</label>
                                 @php
                                     $students_array = $course->students->pluck('id')->toArray();
                                 @endphp
@@ -112,7 +112,7 @@
                             </div>
 
                             <div>
-                                <button type="submit" class="btn btn-primary">Ajouter</button>
+                                <button type="submit" class="btn btn-primary">Add</button>
                             </div>
                         </div>
                     </div>

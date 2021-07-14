@@ -27,24 +27,24 @@ class CourseRequest extends BaseRequest
             'user_id' => ['nullable', 'exists:users,id', function ($attribute, $value, $fail) {
                 $user = User::find($value);
                 if ($user && !$user->is_instructor) {
-                    $fail('L\'utilisateur renseigne n\'est pas un instructor');
+                    $fail('The specified user is not an instructor');
                 }
             }],
-            'intitule' => ['required', 'string', function ($attribute, $value, $fail) use ($formation_id, $course_id) {
-                $course = Course::where('intitule', $value)
+            'title' => ['required', 'string', function ($attribute, $value, $fail) use ($formation_id, $course_id) {
+                $course = Course::where('title', $value)
                     ->where('formation_id', $formation_id)->first();
 
                 if ($course && $course->id != $course_id) {
-                    $fail('Ce cours existe deja dans cette formation');
+                    $fail('This course already exists in this formation');
                 }
             }],
             'students' => ['nullable', function ($attribute, $value, $fail) use ($course) {
                 foreach ($value as $item) {
                     $student = User::find($item);
                     if (!$student) {
-                        $fail('Un ou plusieurs students inexistant(s)');
+                        $fail('One or more non-existent students');
                     } else if (!$student->is_student || !$student->formation_id || ($student->formation_id != $course->formation_id)) {
-                        $fail('Certains students ne peuvent avoir acces a ce cours');
+                        $fail('Some students cannot access this course');
                     } else {
                         $this->students_array[] = $student;
                     }

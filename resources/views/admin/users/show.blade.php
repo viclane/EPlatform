@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Profil de ' . $user->full_name])
+@extends('layouts.app', ['title' => 'Profile of' . $user->full_name])
 
 @section('content')
     <div class="container">
@@ -6,24 +6,24 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex">
-                        Details de l'utilisateur
+                        User details
 
                         <a href="{{ route('admin.users.edit', ['user' => $user->id]) }}" class="ml-auto btn btn-primary">
                             <i class="fa fa-pen"></i>
-                            Editer
+                            Edit
                         </a>
                     </div>
                     <div class="card-body">
-                        Nom: {{ $user->nom }}
+                        Fisrt_name: {{ $user->first_name }}
                         <br>
-                        Prenom: {{ $user->prenom }}
+                        Last_name: {{ $user->last_name }}
                         <br>
                         Login: {{ $user->login }}
                         <br>
                         Type: {{ $user->type }}
                         <br>
                         @if ($user->is_student && $user->formation)
-                        Formation: <a href="{{ route('admin.formations.show', ['formation' => $user->formation->id]) }}">{{ $user->formation->intitule }}</a>
+                        Formation: <a href="{{ route('admin.formations.show', ['formation' => $user->formation->id]) }}">{{ $user->formation->title }}</a>
                         @endif
 
                         <br/>
@@ -34,17 +34,17 @@
                         @if ($count && ($user->is_student || $user->is_instructor))
                             <p>
                                 @if ($user->is_student)
-                                est inscrit à
+                                is registered at
                                 @else
-                                est assigné à
+                                is assigned at
                                 @endif
-                                {{ $count }} cours
+                                {{ $count }} course
                             </p>
                             <ul>
                             @foreach ($user->courses as $course)
                                 <li class="">
                                     <a href="{{ route('admin.courses.show', ['course' => $course->id]) }}">
-                                        {{ $course->intitule }}
+                                        {{ $course->title }}
                                     </a>
                                 </li>
                             @endforeach

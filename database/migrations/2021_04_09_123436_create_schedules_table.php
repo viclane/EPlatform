@@ -15,11 +15,11 @@ class CreateSchedulesTable extends Migration
     { // du prof ? Yep
         Schema::create('schedules', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('date_start');
-            $table->dateTime('date_fin');
+            $table->dateTime('start_date');
+            $table->dateTime('end_date');
             $table->timestamps();
             $table->foreignId('course_id');
-            $table->foreign('course_id')->references('id')->on('cours');;
+            $table->foreign('course_id')->references('id')->on('course');;
         });
     }
 

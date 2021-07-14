@@ -6,7 +6,7 @@
     }
 @endphp
 
-@extends('layouts.app', ['title' => 'Ajouter un utilisateur'])
+@extends('layouts.app', ['title' => 'Add un utilisateur'])
 
 @section('content')
 
@@ -21,15 +21,15 @@
                 <div class="col-md-8 {{ $editing ? '' : 'mx-auto' }}">
                     <div class="card">
                         <div class="card-header">
-                            {{ $editing ? 'Modifier une formation' : 'Creer une formation' }}
+                            {{ $editing ? 'Edit the formation' : 'Create the formation' }}
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="intitule">Intitule</label>
-                                <input type="text" name="intitule" id="intitule" value="{{ old('intitule', $formation->intitule) }}"
-                                    class="form-control @error('intitule') is-invalid @enderror" placeholder="Intitule" required>
+                                <label for="title">Title</label>
+                                <input type="text" name="title" id="title" value="{{ old('title', $formation->title) }}"
+                                    class="form-control @error('title') is-invalid @enderror" placeholder="Title" required>
 
-                                @error('intitule')
+                                @error('title')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -38,7 +38,7 @@
 
                             <div class="d-flex justify-content-between">
                                 <button class="btn btn-success" type="submit">
-                                    {{ $editing ? 'Modifier' : 'Ajouter' }}
+                                    {{ $editing ? 'Edit' : 'Add' }}
                                 </button>
                                 <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
@@ -48,15 +48,15 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">
-                            Ajouter des cours a la formation
+                            Add courses in the formation
                         </div>
                         <div class="card-body">
                             @include('admin.partials.addCourses', ['item' => $formation])
                             <div class="mb-2">
-                                <small>Si le cours n'existe pas, <strong><a href="{{ route('admin.courses.create', ['formation_id' => $formation->id]) }}">Ajouter ici</a></strong></small>
+                                <small>If the course does not exist, <strong><a href="{{ route('admin.courses.create', ['formation_id' => $formation->id]) }}">Add here</a></strong></small>
                             </div>
                             <div>
-                                <button type="submit" class="btn btn-primary">Ajouter</button>
+                                <button type="submit" class="btn btn-primary">Add</button>
                             </div>
                         </div>
                     </div>

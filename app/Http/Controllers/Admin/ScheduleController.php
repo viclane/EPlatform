@@ -63,7 +63,7 @@ class ScheduleController extends Controller
 
         return view('admin.schedules.showForm', [
             'editing' => false,
-            'schedule' => $schedules,
+            'schedule' => $schedule,
             'courses' => Course::all()
         ]);
     }
@@ -77,7 +77,7 @@ class ScheduleController extends Controller
             return redirect()->route('admin.schedules.index')->with(['success' => 'Schedule has been added !']);
         }
 
-        return redirect('/', 500)->with(['error' => 'An unexpected error occured']);
+        return redirect('/', 500)->with(['error' => 'An unexpected error has occured']);
     }
 
     public function show(Schedule $schedule)
@@ -114,7 +114,7 @@ class ScheduleController extends Controller
                 ->with(['success' => 'Schedule has been deleted successfully']);
         }
 
-        return redirect('/', 500)->with(['error' => 'An unexpected error occured']);
+        return redirect('/', 500)->with(['error' => 'An unexpected error has occured']);
     }
 
     /**

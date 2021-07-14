@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'List of my $courses'])
+@extends('layouts.app', ['title' => 'List of my courses'])
 
 @section('content')
     <div class="container">
@@ -36,15 +36,15 @@
                             <tbody>
                             @foreach ($courses as $course)
                                 <tr>
-                                    <td>{{ $course->intitule }}</td>
+                                    <td>{{ $course->title }}</td>
                                     <td class="pb-2" style="width: 25%;">
                                         <a href="{{ route('students.courses.show', ['course' => $course->id]) }}" class="btn btn-primary btn-sm mr-1 mb-1">
                                             <i class="fa fa-eye"></i>
-                                           See
+                                           View
                                         </a>
                                         <a href="{{ route('students.schedules', ['course_id' => $course->id]) }}" class="btn btn-secondary btn-sm mr-1 mb-1">
                                             <i class="fa fa-clock"></i>
-                                            See a schedule
+                                            View a schedule
                                         </a>
                                         <form action="{{ route('students.courses.update', ['course' => $course->id]) }}" method="POST"
                                             class="d-inline-block">

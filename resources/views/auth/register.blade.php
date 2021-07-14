@@ -68,7 +68,7 @@
                                         <option value="" disabled>Choose a formation</option>
                                         @foreach($formations as $formation)
                                         <option value="{{ $formation->id }}" @if(old('formation_id') == $formation->id) selected @endif>
-                                            {{ $formation->intitule }}
+                                            {{ $formation->title }}
                                         </option>
                                         @endforeach
                                     </select>

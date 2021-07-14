@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => "Display courses {$course->intitule}"])
+@extends('layouts.app', ['title' => "Display courses {$course->title}"])
 
 @php
     $myCourses = Auth::user()->courses->pluck('id')->toArray();
@@ -39,13 +39,13 @@
                             <div class="ml-auto">
                                 <a href="{{ route('students.schedules', ['course_id' => $course->id]) }}" class="btn btn-secondary btn-sm mr-1 mb-1">
                                     <i class="fa fa-clock"></i>
-                                    See a schedule
+                                    View a schedule
                                 </a>
                             </div>
                         @endif
                     </div>
                     <div class="card-body">
-                        Intitule: {{ $course->intitule }}
+                        Title: {{ $course->title }}
                         <br/>
                         Instructor: @if($course->instructor)
                         <a href="{{ route('profile.show', ['user' => $course->instructor->id]) }}">

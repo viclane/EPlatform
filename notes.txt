@@ -1,5 +1,5 @@
 changement de mot de passe (done)
-modification du nom et prenom (done)
+modification du first_name et last_name (done)
 Acceptation des users/refus des users (done)
 Affectation d'un instructor a un cours (done)
 crud cours (done)

@@ -23,7 +23,7 @@ class FormationFactory extends Factory
     public function definition()
     {
         return [
-            'intitule' => $this->faker->company,
+            'title' => $this->faker->company,
         ];
     }
 }

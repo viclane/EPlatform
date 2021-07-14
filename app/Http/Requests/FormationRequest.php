@@ -19,17 +19,17 @@ class FormationRequest extends BaseRequest
         $formation = $this->sometimes == '' ? null : $this->route('formation');
         $this->active_formation = $formation;
         $unique_intitule = 'unique:formations';
-        $unique_intitule .= $formation ? ',intitule,' . $formation->id : '';
+        $unique_intitule .= $formation ? ',title,' . $formation->id : '';
 
         return [
-            'intitule' => $this->sometimes . 'required|string|' . $unique_intitule,
+            'title' => $this->sometimes . 'required|string|' . $unique_intitule,
             'courses' => ['nullable', function ($attribute, $value, $fail) use ($formation) {
                 foreach ($value as $item) {
                     $course = Course::find($item);
                     if (!$course) {
-                        $fail('Un ou plusieurs cours inexistant(s)');
+                        $fail('One or more courses non-existent');
                     } else if ($course->formation_id && (!$formation || $course->formation_id != $formation->id)) {
-                        $fail('Le cours a deja ete attribue');
+                        $fail('The course has already assigned');
                     } else {
                         $this->courses_array[] = $course;
                     }

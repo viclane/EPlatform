@@ -8,8 +8,8 @@
             <div class="card">
                 <div class="card-header d-flex">
                     @php
-                    $title = 'Liste des utilisateurs';
-                    $title = $type ? $type == 'instructor' ? 'Liste des instructors' : 'Liste des students' : $title;
+                    $title = 'User list';
+                    $title = $type ? $type == 'instructor' ? 'Instructor list' : 'Students list' : $title;
                     @endphp
 
                     {{ $title }}
@@ -20,12 +20,12 @@
                             <input type="text" name="query" class="form-control mr-2 mb-2" value="{{ old('query', $query ?? '') }}"/>
                             <div class="form-group mr-2 mb-2">
                                 <select class="form-control" name="type">
-                                    <option value="" @if($type == null) selected @endif>Tout le monde</option>
+                                    <option value="" @if($type == null) selected @endif>Everybody</option>
                                     <option value="instructor" @if($type == 'instructor') selected @endif>
-                                        instructors
+                                        Instructors
                                     </option>
                                     <option value="student" @if($type == 'student') selected @endif>
-                                        Étudiants
+                                        Students
                                     </option>
                                 </select>
                             </div>
@@ -36,7 +36,7 @@
                     <div class="ml-auto">
                         <a href="{{ route('admin.users.create') }}" class="btn btn-outline-primary">
                             <i class="fa fa-plus"></i>
-                            Ajouter
+                            Add
                         </a>
                     </div>
                 </div>
@@ -47,11 +47,11 @@
                     <table class="table table-responsive">
                         <thead>
                             <tr>
-                                <th scope="col">Nom</th>
+                                <th scope="col">Name</th>
                                 <th scope="col">Login</th>
                                 <th scope="col">Role</th>
                                 <th scope="col">Formation</th>
-                                <th scope="col">Nombre de cours</th>
+                                <th scope="col">Number of course</th>
                                 <th scope="col" style="width: 25%;">Actions</th>
                             </tr>
                         </thead>
@@ -61,16 +61,16 @@
                                 <td>{{ $user->full_name }}</td>
                                 <td>{{ $user->login }}</td>
                                 <td>{{ $user->type ? $user->type : 'null' }}</td>
-                                <td>{{ $user->formation ? $user->formation->intitule : '' }}</td>
+                                <td>{{ $user->formation ? $user->formation->title : '' }}</td>
                                 <td>{{ $user->courses && !$user->is_admin ? $user->courses->count() : '0' }}</td>
                                 <td class="pb-2" style="width: 25%;">
                                     <a href="{{ route('admin.users.show', ['user' => $user->id]) }}" class="btn btn-primary btn-sm mr-1 mb-1">
                                         <i class="fa fa-eye"></i>
-                                        Voir
+                                        View
                                     </a>
                                     <a href="{{ route('admin.users.edit', ['user' => $user->id]) }}" class="btn btn-secondary btn-sm mr-1 mb-1">
                                         <i class="fa fa-pen"></i>
-                                        Modifier
+                                        Edit
                                     </a>
                                     <form action="{{ route('admin.users.forceDelete', ['user' => $user->id]) }}" method="POST"
                                           class="d-inline-block">
@@ -78,7 +78,7 @@
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm mr-1 mb-1">
                                             <i class="fa fa-trash-alt"></i>
-                                            Supprimer
+                                            Delete
                                         </button>
                                     </form>
                                 </td>

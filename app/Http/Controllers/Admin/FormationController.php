@@ -39,7 +39,7 @@ class FormationController extends Controller
             return redirect()->route('admin.formations.index')->with(['success' => 'The formation has been added !']);
         }
 
-        return redirect('/', 500)->with(['error' => 'An unexpected error occured']);
+        return redirect('/', 500)->with(['error' => 'An unexpected error has occured']);
     }
 
     public function show(Formation $formation)
@@ -78,7 +78,7 @@ class FormationController extends Controller
                 ->with(['success' => 'The formation has been modified !']);
         }
 
-        return redirect('/', 500)->with(['error' => 'An unexpected error occured']);
+        return redirect('/', 500)->with(['error' => 'An unexpected error has occured']);
     }
 
     public function destroy(Formation $formation)
@@ -88,7 +88,7 @@ class FormationController extends Controller
                 ->with(['success' => 'The formation has been deleted !']);
         }
 
-        return redirect('/', 500)->with(['error' => 'An unexpected error occured']);
+        return redirect('/', 500)->with(['error' => 'An unexpected error has occured']);
     }
 
     public function getAvailableCourses($formation_id = null)

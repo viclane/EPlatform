@@ -10,7 +10,7 @@ class Schedule extends Model
     use HasFactory;
 
     protected $fillable = [
-        'start_date', 'date_fin', 'course_id'
+        'start_date', 'end_date', 'course_id'
     ];
 
     protected $casts = [

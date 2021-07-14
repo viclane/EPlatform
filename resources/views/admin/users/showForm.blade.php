@@ -6,7 +6,7 @@
     }
 @endphp
 
-@extends('layouts.app', ['title' => $editing ? 'Modifier un utilisateur' : 'Ajouter un utilisateur'])
+@extends('layouts.app', ['title' => $editing ? 'Edit un utilisateur' : 'Add un utilisateur'])
 
 @section('content')
 
@@ -21,24 +21,24 @@
                 <div class="col-md-8 {{ $user->is_instructor ? '' : 'mx-auto' }}">
                     <div class="card">
                         <div class="card-header">
-                            {{ $editing ? 'Modifier '.$user->full_name : 'Ajouter un utilisateur' }}
+                            {{ $editing ? 'Edit '.$user->full_name : 'Add user' }}
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="nom">Nom</label>
-                                <input type="text" name="nom" id="nom" value="{{ old('nom', $user->nom) }}" class="form-control @error('nom') is-invalid @enderror" required>
+                                <label for="first_name">Fisrt_name</label>
+                                <input type="text" name="first_name" id="first_name" value="{{ old('first_name', $user->first_name) }}" class="form-control @error('first_name') is-invalid @enderror" required>
 
-                                @error('nom')
+                                @error('first_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="prenom">Prenom</label>
-                                <input type="text" name="prenom" id="prenom" value="{{ old('prenom', $user->prenom) }}" class="form-control @error('prenom') is-invalid @enderror" required>
+                                <label for="last_name">Last_name</label>
+                                <input type="text" name="last_name" id="last_name" value="{{ old('last_name', $user->last_name) }}" class="form-control @error('last_name') is-invalid @enderror" required>
 
-                                @error('prenom')
+                                @error('last_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -85,7 +85,7 @@
                                 <label for="formation_id">
                                     {{ __('Formation') }}
                                     <small>
-                                        (Ne selectionner que si l'utilisateur est un student)
+                                        (Only select if the user is a student)
                                     </small>
                                 </label>
 
@@ -93,12 +93,12 @@
                                     class="form-control @error('formation_id') is-invalid @enderror">
                                     <option value=""
                                         @if(old('formation_id', $user->formation_id) == null) selected @endif>
-                                        Aucune formation
+                                       No formation
                                     </option>
                                     @foreach($formations as $formation)
                                     <option value="{{ $formation->id }}"
                                         @if(old('formation_id', $user->formation_id) == $formation->id) selected @endif>
-                                        {{ $formation->intitule }}
+                                        {{ $formation->title }}
                                     </option>
                                     @endforeach
                                 </select>
@@ -111,7 +111,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="password">Mot de passe</label>
+                                <label for="password">Password</label>
                                 <input type="password" name="password" id="password"
                                 class="form-control @error('password') is-invalid @enderror" @if (!$editing) required @endif>
                                 @error('password')
@@ -122,14 +122,14 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="password_confirmation">Confirmer mot de passe</label>
+                                <label for="password_confirmation">Confirm Password</label>
                                 <input type="password" name="password_confirmation" id="password_confirmation"
                                 class="form-control" @if (!$editing) required @endif>
                             </div>
 
                             <div class="d-flex justify-content-between">
                                 <button class="btn btn-success" type="submit">
-                                    {{ $editing ? 'Modifier' : 'Ajouter' }}
+                                    {{ $editing ? 'Edit' : 'Add' }}
                                 </button>
                                 <button type="reset" class="btn btn-secondary">Reset</button>
                             </div>
@@ -141,7 +141,7 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header">
-                            {{ $user->is_student ? 'Inscrire l\'student a des cours ' : 'Ajouter des cours a l\'instructor' }}
+                            {{ $user->is_student ? 'Enroll the student in courses ' : 'Add courses to instructor' }}
                         </div>
                         <div class="card-body">
                             @include('admin.partials.addCourses', [
@@ -150,16 +150,16 @@
                             ])
 
                             <div class="mb-2">
-                                <small>Si le cours n'existe pas,
+                                <small>If the course does not exist,
                                     <strong>
                                         <a href="{{ route('admin.courses.create', ['user_id' => $user->id]) }}">
-                                            Ajouter ici
+                                            Add here
                                         </a>
                                     </strong>
                                 </small>
                             </div>
                             <div>
-                                <button type="submit" class="btn btn-primary">Ajouter</button>
+                                <button type="submit" class="btn btn-primary">Add</button>
                             </div>
                         </div>
                     </div>

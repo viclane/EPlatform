@@ -6422,7 +6422,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 		// (such as Node.js), expose a factory as module.exports.
 		// This accentuates the need for the creation of a real `window`.
 		// e.g. var jQuery = require("jquery")(window);
-		// See ticket #14549 for more info.
+		// View ticket #14549 for more info.
 		module.exports = global.document ?
 			factory( global, true ) :
 			function( w ) {
@@ -6518,8 +6518,8 @@ var document = window.document;
 				// On the other hand, just using `getAttribute` is not enough as
 				// the `nonce` attribute is reset to an empty string whenever it
 				// becomes browsing-context connected.
-				// See https://github.com/whatwg/html/issues/2369
-				// See https://html.spec.whatwg.org/#nonce-attributes
+				// View https://github.com/whatwg/html/issues/2369
+				// View https://html.spec.whatwg.org/#nonce-attributes
 				// The `node.getAttribute` check was added for the sake of
 				// `jQuery.globalEval` so that it can fake a nonce-containing node
 				// via an object.
@@ -7109,7 +7109,7 @@ var i,
 	},
 
 	// Used for iframes
-	// See setDocument()
+	// View setDocument()
 	// Removing the function wrapper causes a "Permission Denied"
 	// error in IE
 	unloadHandler = function() {
@@ -7712,7 +7712,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 	// We allow this because of a bug in IE8/9 that throws an error
 	// whenever `document.activeElement` is accessed on an iframe
 	// So, we allow :focus to pass through QSA all the time to avoid the IE error
-	// See https://bugs.jquery.com/ticket/13378
+	// View https://bugs.jquery.com/ticket/13378
 	rbuggyQSA = [];
 
 	if ( ( support.qsa = rnative.test( document.querySelectorAll ) ) ) {
@@ -8107,7 +8107,7 @@ Sizzle.uniqueSort = function( results ) {
 	}
 
 	// Clear input after sorting to release objects
-	// See https://github.com/jquery/sizzle/pull/225
+	// View https://github.com/jquery/sizzle/pull/225
 	sortInput = null;
 
 	return results;
@@ -10486,7 +10486,7 @@ jQuery.extend( {
 	isReady: false,
 
 	// A counter to track how many items to wait for before
-	// the ready event fires. See #6781
+	// the ready event fires. View #6781
 	readyWait: 1,
 
 	// Handle when the DOM is ready
@@ -12350,7 +12350,7 @@ var
 
 	// Support: IE <=10 - 11, Edge 12 - 13 only
 	// In IE/Edge using regex groups here causes severe slowdowns.
-	// See https://connect.microsoft.com/IE/feedback/details/1736512/
+	// View https://connect.microsoft.com/IE/feedback/details/1736512/
 	rnoInnerhtml = /<script|<style|<link/i,
 
 	// checked="checked" or checked
@@ -12716,7 +12716,7 @@ jQuery.fn.extend( {
 				return elem.innerHTML;
 			}
 
-			// See if we can take a shortcut and just use innerHTML
+			// View if we can take a shortcut and just use innerHTML
 			if ( typeof value === "string" && !rnoInnerhtml.test( value ) &&
 				!wrapMap[ ( rtagName.exec( value ) || [ "", "" ] )[ 1 ].toLowerCase() ] ) {
 
@@ -13082,7 +13082,7 @@ var
 
 	// Swappable if display is none or starts with table
 	// except "table", "table-cell", or "table-caption"
-	// See here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
+	// View here for display values: https://developer.mozilla.org/en-US/docs/CSS/display
 	rdisplayswap = /^(none|table(?!-c[ea]).+)/,
 	rcustomProp = /^--/,
 	cssShow = { position: "absolute", visibility: "hidden", display: "block" },
@@ -16527,7 +16527,7 @@ jQuery.ajaxTransport( function( options ) {
 
 
 
-// Prevent auto-execution of scripts when no explicit dataType was provided (See gh-2432)
+// Prevent auto-execution of scripts when no explicit dataType was provided (View gh-2432)
 jQuery.ajaxPrefilter( function( s ) {
 	if ( s.crossDomain ) {
 		s.contents.script = false;
@@ -20616,7 +20616,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @private
      * @param {Object} object The object to compare.
      * @param {Object} other The other object to compare.
-     * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
+     * @param {number} bitmask The bitmask flags. View `baseIsEqual` for more details.
      * @param {Function} customizer The function to customize comparisons.
      * @param {Function} equalFunc The function to determine equivalents of values.
      * @param {Object} [stack] Tracks traversed `object` and `other` objects.
@@ -20791,7 +20791,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      */
     function baseIteratee(value) {
       // Don't store the `typeof` result in a variable to avoid a JIT bug in Safari 9.
-      // See https://bugs.webkit.org/show_bug.cgi?id=156034 for more details.
+      // View https://bugs.webkit.org/show_bug.cgi?id=156034 for more details.
       if (typeof value == 'function') {
         return value;
       }
@@ -21249,7 +21249,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
         return result;
       }
       // Leverage the exponentiation by squaring algorithm for a faster repeat.
-      // See https://en.wikipedia.org/wiki/Exponentiation_by_squaring for more details.
+      // View https://en.wikipedia.org/wiki/Exponentiation_by_squaring for more details.
       do {
         if (n % 2) {
           result += string;
@@ -22002,11 +22002,11 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
       }
       // Fixes an `Array#sort` bug in the JS engine embedded in Adobe applications
       // that causes it, under certain circumstances, to provide the same value for
-      // `object` and `other`. See https://github.com/jashkenas/underscore/pull/1247
+      // `object` and `other`. View https://github.com/jashkenas/underscore/pull/1247
       // for more details.
       //
       // This also ensures a stable sort in V8 and other engines.
-      // See https://bugs.chromium.org/p/v8/issues/detail?id=90 for more details.
+      // View https://bugs.chromium.org/p/v8/issues/detail?id=90 for more details.
       return object.index - other.index;
     }
 
@@ -22270,7 +22270,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      *
      * @private
      * @param {Function} func The function to wrap.
-     * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
+     * @param {number} bitmask The bitmask flags. View `createWrap` for more details.
      * @param {*} [thisArg] The `this` binding of `func`.
      * @returns {Function} Returns the new wrapped function.
      */
@@ -22335,7 +22335,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      */
     function createCtor(Ctor) {
       return function() {
-        // Use a `switch` statement to work with class constructors. See
+        // Use a `switch` statement to work with class constructors. View
         // http://ecma-international.org/ecma-262/7.0/#sec-ecmascript-function-objects-call-thisargument-argumentslist
         // for more details.
         var args = arguments;
@@ -22353,7 +22353,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
             result = Ctor.apply(thisBinding, args);
 
         // Mimic the constructor's `return` behavior.
-        // See https://es5.github.io/#x13.2.2 for more details.
+        // View https://es5.github.io/#x13.2.2 for more details.
         return isObject(result) ? result : thisBinding;
       };
     }
@@ -22363,7 +22363,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      *
      * @private
      * @param {Function} func The function to wrap.
-     * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
+     * @param {number} bitmask The bitmask flags. View `createWrap` for more details.
      * @param {number} arity The arity of `func`.
      * @returns {Function} Returns the new wrapped function.
      */
@@ -22482,7 +22482,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      *
      * @private
      * @param {Function|string} func The function or method name to wrap.
-     * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
+     * @param {number} bitmask The bitmask flags. View `createWrap` for more details.
      * @param {*} [thisArg] The `this` binding of `func`.
      * @param {Array} [partials] The arguments to prepend to those provided to
      *  the new function.
@@ -22644,7 +22644,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      *
      * @private
      * @param {Function} func The function to wrap.
-     * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
+     * @param {number} bitmask The bitmask flags. View `createWrap` for more details.
      * @param {*} thisArg The `this` binding of `func`.
      * @param {Array} partials The arguments to prepend to those provided to
      *  the new function.
@@ -22720,7 +22720,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      *
      * @private
      * @param {Function} func The function to wrap.
-     * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
+     * @param {number} bitmask The bitmask flags. View `createWrap` for more details.
      * @param {Function} wrapFunc The function to create the `func` wrapper.
      * @param {*} placeholder The placeholder value.
      * @param {*} [thisArg] The `this` binding of `func`.
@@ -22772,7 +22772,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
         precision = precision == null ? 0 : nativeMin(toInteger(precision), 292);
         if (precision && nativeIsFinite(number)) {
           // Shift with exponential notation to avoid floating-point issues.
-          // See [MDN](https://mdn.io/round#Examples) for more details.
+          // View [MDN](https://mdn.io/round#Examples) for more details.
           var pair = (toString(number) + 'e').split('e'),
               value = func(pair[0] + 'e' + (+pair[1] + precision));
 
@@ -22958,7 +22958,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @private
      * @param {Array} array The array to compare.
      * @param {Array} other The other array to compare.
-     * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
+     * @param {number} bitmask The bitmask flags. View `baseIsEqual` for more details.
      * @param {Function} customizer The function to customize comparisons.
      * @param {Function} equalFunc The function to determine equivalents of values.
      * @param {Object} stack Tracks traversed `array` and `other` objects.
@@ -23037,7 +23037,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @param {Object} object The object to compare.
      * @param {Object} other The other object to compare.
      * @param {string} tag The `toStringTag` of the objects to compare.
-     * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
+     * @param {number} bitmask The bitmask flags. View `baseIsEqual` for more details.
      * @param {Function} customizer The function to customize comparisons.
      * @param {Function} equalFunc The function to determine equivalents of values.
      * @param {Object} stack Tracks traversed `object` and `other` objects.
@@ -23073,7 +23073,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
         case regexpTag:
         case stringTag:
           // Coerce regexes to strings and treat strings, primitives and objects,
-          // as equal. See http://www.ecma-international.org/ecma-262/7.0/#sec-regexp.prototype.tostring
+          // as equal. View http://www.ecma-international.org/ecma-262/7.0/#sec-regexp.prototype.tostring
           // for more details.
           return object == (other + '');
 
@@ -23115,7 +23115,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @private
      * @param {Object} object The object to compare.
      * @param {Object} other The other object to compare.
-     * @param {number} bitmask The bitmask flags. See `baseIsEqual` for more details.
+     * @param {number} bitmask The bitmask flags. View `baseIsEqual` for more details.
      * @param {Function} customizer The function to customize comparisons.
      * @param {Function} equalFunc The function to determine equivalents of values.
      * @param {Object} stack Tracks traversed `object` and `other` objects.
@@ -23979,7 +23979,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      *
      * **Note:** If this function becomes hot, i.e. is invoked a lot in a short
      * period of time, it will trip its breaker and transition to an identity
-     * function to avoid garbage collection pauses in V8. See
+     * function to avoid garbage collection pauses in V8. View
      * [V8 issue 2070](https://bugs.chromium.org/p/v8/issues/detail?id=2070)
      * for more details.
      *
@@ -24019,7 +24019,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * @private
      * @param {Function} wrapper The function to modify.
      * @param {Function} reference The reference function.
-     * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
+     * @param {number} bitmask The bitmask flags. View `createWrap` for more details.
      * @returns {Function} Returns `wrapper`.
      */
     function setWrapToString(wrapper, reference, bitmask) {
@@ -24138,7 +24138,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      *
      * @private
      * @returns {Array} details The details to modify.
-     * @param {number} bitmask The bitmask flags. See `createWrap` for more details.
+     * @param {number} bitmask The bitmask flags. View `createWrap` for more details.
      * @returns {Array} Returns `details`.
      */
     function updateWrapDetails(details, bitmask) {
@@ -27465,7 +27465,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * prepended to the arguments it receives.
      *
      * This method differs from `_.bind` by allowing bound functions to reference
-     * methods that may be redefined or don't yet exist. See
+     * methods that may be redefined or don't yet exist. View
      * [Peter Michaux's article](http://peter.michaux.ca/articles/lazy-function-definition-pattern)
      * for more details.
      *
@@ -27625,7 +27625,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
      * until to the next tick, similar to `setTimeout` with a timeout of `0`.
      *
-     * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+     * View [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
      * for details over the differences between `_.debounce` and `_.throttle`.
      *
      * @static
@@ -28227,7 +28227,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * If `wait` is `0` and `leading` is `false`, `func` invocation is deferred
      * until to the next tick, similar to `setTimeout` with a timeout of `0`.
      *
-     * See [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
+     * View [David Corbacho's article](https://css-tricks.com/debouncing-throttling-explained-examples/)
      * for details over the differences between `_.throttle` and `_.debounce`.
      *
      * @static
@@ -29160,7 +29160,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * partially applied.
      *
      * Partial comparisons will match empty array and empty object `source`
-     * values against any array or object value, respectively. See `_.isEqual`
+     * values against any array or object value, respectively. View `_.isEqual`
      * for a list of supported value comparisons.
      *
      * @static
@@ -30638,7 +30638,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
     /**
      * Creates an array of the own enumerable property names of `object`.
      *
-     * **Note:** Non-object values are coerced to objects. See the
+     * **Note:** Non-object values are coerced to objects. View the
      * [ES spec](http://ecma-international.org/ecma-262/7.0/#sec-object.keys)
      * for more details.
      *
@@ -31589,7 +31589,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      *
      * Though the ">" character is escaped for symmetry, characters like
      * ">" and "/" don't need escaping in HTML and have no special meaning
-     * unless they're part of a tag or unquoted attribute value. See
+     * unless they're part of a tag or unquoted attribute value. View
      * [Mathias Bynens's article](https://mathiasbynens.be/notes/ambiguous-ampersands)
      * (under "semi-related fun fact") for more details.
      *
@@ -32905,7 +32905,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * partially applied.
      *
      * Partial comparisons will match empty array and empty object `source`
-     * values against any array or object value, respectively. See `_.isEqual`
+     * values against any array or object value, respectively. View `_.isEqual`
      * for a list of supported value comparisons.
      *
      * **Note:** Multiple values can be checked by combining several matchers
@@ -32941,7 +32941,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * object value is equivalent, else `false`.
      *
      * **Note:** Partial comparisons will match empty array and empty object
-     * `srcValue` values against any array or object value, respectively. See
+     * `srcValue` values against any array or object value, respectively. View
      * `_.isEqual` for a list of supported value comparisons.
      *
      * **Note:** Multiple values can be checked by combining several matchers
@@ -34477,7 +34477,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
   if (true) {
     // Expose Lodash on the global object to prevent errors when Lodash is
     // loaded by a script tag in the presence of an AMD loader.
-    // See http://requirejs.org/docs/errors.html#mismatch for more details.
+    // View http://requirejs.org/docs/errors.html#mismatch for more details.
     // Use `_.noConflict` to remove Lodash from the global object.
     root._ = _;
 
@@ -34838,18 +34838,18 @@ function getScroll(element) {
  * @param {Object} rect - Rect object you want to change
  * @param {HTMLElement} element - The element from the function reads the scroll values
  * @param {Boolean} subtract - set to true if you want to subtract the scroll values
- * @return {Object} rect - The modifier rect object
+ * @return {Object} rect - The edit rect object
  */
 function includeScroll(rect, element) {
   var subtract = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
   var scrollTop = getScroll(element, 'top');
   var scrollLeft = getScroll(element, 'left');
-  var modifier = subtract ? -1 : 1;
-  rect.top += scrollTop * modifier;
-  rect.bottom += scrollTop * modifier;
-  rect.left += scrollLeft * modifier;
-  rect.right += scrollLeft * modifier;
+  var edit = subtract ? -1 : 1;
+  rect.top += scrollTop * edit;
+  rect.bottom += scrollTop * edit;
+  rect.left += scrollLeft * edit;
+  rect.right += scrollLeft * edit;
   return rect;
 }
 
@@ -35399,26 +35399,26 @@ function findIndex(arr, prop, value) {
  * @memberof Popper.Utils
  * @param {dataObject} data
  * @param {Array} modifiers
- * @param {String} ends - Optional modifier name used as stopper
+ * @param {String} ends - Optional edit name used as stopper
  * @returns {dataObject}
  */
 function runModifiers(modifiers, data, ends) {
   var modifiersToRun = ends === undefined ? modifiers : modifiers.slice(0, findIndex(modifiers, 'name', ends));
 
-  modifiersToRun.forEach(function (modifier) {
-    if (modifier['function']) {
+  modifiersToRun.forEach(function (edit) {
+    if (edit['function']) {
       // eslint-disable-line dot-notation
-      console.warn('`modifier.function` is deprecated, use `modifier.fn`!');
+      console.warn('`edit.function` is deprecated, use `edit.fn`!');
     }
-    var fn = modifier['function'] || modifier.fn; // eslint-disable-line dot-notation
-    if (modifier.enabled && isFunction(fn)) {
+    var fn = edit['function'] || edit.fn; // eslint-disable-line dot-notation
+    if (edit.enabled && isFunction(fn)) {
       // Add properties to offsets to make them a complete clientRect object
-      // we do this before each modifier to make sure the previous one doesn't
+      // we do this before each edit to make sure the previous one doesn't
       // mess with these values
       data.offsets.popper = getClientRect(data.offsets.popper);
       data.offsets.reference = getClientRect(data.offsets.reference);
 
-      data = fn(data, modifier);
+      data = fn(data, edit);
     }
   });
 
@@ -35479,7 +35479,7 @@ function update() {
 }
 
 /**
- * Helper used to know if the given modifier is enabled.
+ * Helper used to know if the given edit is enabled.
  * @method
  * @memberof Popper.Utils
  * @returns {Boolean}
@@ -35521,7 +35521,7 @@ function getSupportedPropertyName(property) {
 function destroy() {
   this.state.isDestroyed = true;
 
-  // touch DOM only if `applyStyle` modifier is enabled
+  // touch DOM only if `applyStyle` edit is enabled
   if (isModifierEnabled(this.modifiers, 'applyStyle')) {
     this.popper.removeAttribute('x-placement');
     this.popper.style.position = '';
@@ -35695,7 +35695,7 @@ function applyStyle(data) {
   // any property present in `data.styles` will be applied to the popper,
   // in this way we can make the 3rd party modifiers add custom styles to it
   // Be aware, modifiers could override the properties defined in the previous
-  // lines of this modifier!
+  // lines of this edit!
   setStyles(data.instance.popper, data.styles);
 
   // any property present in `data.attributes` will be applied to the popper,
@@ -35803,11 +35803,11 @@ function computeStyle(data, options) {
 
   // Remove this legacy support in Popper.js v2
 
-  var legacyGpuAccelerationOption = find(data.instance.modifiers, function (modifier) {
-    return modifier.name === 'applyStyle';
+  var legacyGpuAccelerationOption = find(data.instance.modifiers, function (edit) {
+    return edit.name === 'applyStyle';
   }).gpuAcceleration;
   if (legacyGpuAccelerationOption !== undefined) {
-    console.warn('WARNING: `gpuAcceleration` option moved to `computeStyle` modifier and will not be supported in future versions of Popper.js!');
+    console.warn('WARNING: `gpuAcceleration` option moved to `computeStyle` edit and will not be supported in future versions of Popper.js!');
   }
   var gpuAcceleration = legacyGpuAccelerationOption !== undefined ? legacyGpuAccelerationOption : options.gpuAcceleration;
 
@@ -35888,13 +35888,13 @@ function computeStyle(data, options) {
 }
 
 /**
- * Helper used to know if the given modifier depends from another one.<br />
- * It checks if the needed modifier is listed and enabled.
+ * Helper used to know if the given edit depends from another one.<br />
+ * It checks if the needed edit is listed and enabled.
  * @method
  * @memberof Popper.Utils
  * @param {Array} modifiers - list of modifiers
- * @param {String} requestingName - name of requesting modifier
- * @param {String} requestedName - name of requested modifier
+ * @param {String} requestingName - name of requesting edit
+ * @param {String} requestedName - name of requested edit
  * @returns {Boolean}
  */
 function isModifierRequired(modifiers, requestingName, requestedName) {
@@ -35903,14 +35903,14 @@ function isModifierRequired(modifiers, requestingName, requestedName) {
     return name === requestingName;
   });
 
-  var isRequired = !!requesting && modifiers.some(function (modifier) {
-    return modifier.name === requestedName && modifier.enabled && modifier.order < requesting.order;
+  var isRequired = !!requesting && modifiers.some(function (edit) {
+    return edit.name === requestedName && edit.enabled && edit.order < requesting.order;
   });
 
   if (!isRequired) {
     var _requesting = '`' + requestingName + '`';
     var requested = '`' + requestedName + '`';
-    console.warn(requested + ' modifier is required by ' + _requesting + ' modifier in order to work, be sure to include it before ' + _requesting + '!');
+    console.warn(requested + ' edit is required by ' + _requesting + ' edit in order to work, be sure to include it before ' + _requesting + '!');
   }
   return isRequired;
 }
@@ -35936,7 +35936,7 @@ function arrow(data, options) {
   if (typeof arrowElement === 'string') {
     arrowElement = data.instance.popper.querySelector(arrowElement);
 
-    // if arrowElement is not found, don't run the modifier
+    // if arrowElement is not found, don't run the edit
     if (!arrowElement) {
       return data;
     }
@@ -36081,7 +36081,7 @@ var BEHAVIORS = {
  * @returns {Object} The data object, properly modified
  */
 function flip(data, options) {
-  // if `inner` modifier is enabled, we can't use the `flip` modifier
+  // if `inner` edit is enabled, we can't use the `flip` edit
   if (isModifierEnabled(data.instance.modifiers, 'inner')) {
     return data;
   }
@@ -36336,7 +36336,7 @@ function parseOffset(offset, popperOffsets, referenceOffsets, basePlacement) {
  * @argument {Object} data - The data object generated by update method
  * @argument {Object} options - Modifiers configuration and options
  * @argument {Number|String} options.offset=0
- * The offset value as described in the modifier description
+ * The offset value as described in the edit description
  * @returns {Object} The data object, properly modified
  */
 function offset(data, _ref) {
@@ -36385,7 +36385,7 @@ function preventOverflow(data, options) {
 
   // If offsetParent is the reference element, we really want to
   // go one step up and use the next offsetParent as reference to
-  // avoid to make this modifier completely useless and look like broken
+  // avoid to make this edit completely useless and look like broken
   if (data.instance.reference === boundariesElement) {
     boundariesElement = getOffsetParent(boundariesElement);
   }
@@ -36456,7 +36456,7 @@ function shift(data) {
   var basePlacement = placement.split('-')[0];
   var shiftvariation = placement.split('-')[1];
 
-  // if shift shiftvariation is specified, run the modifier
+  // if shift shiftvariation is specified, run the edit
   if (shiftvariation) {
     var _data$offsets = data.offsets,
         reference = _data$offsets.reference,
@@ -36490,8 +36490,8 @@ function hide(data) {
   }
 
   var refRect = data.offsets.reference;
-  var bound = find(data.instance.modifiers, function (modifier) {
-    return modifier.name === 'preventOverflow';
+  var bound = find(data.instance.modifiers, function (edit) {
+    return edit.name === 'preventOverflow';
   }).boundaries;
 
   if (refRect.bottom < bound.top || refRect.left > bound.right || refRect.top > bound.bottom || refRect.right < bound.left) {
@@ -36542,7 +36542,7 @@ function inner(data) {
 }
 
 /**
- * Modifier function, each modifier can have a function of this type assigned
+ * Edit function, each edit can have a function of this type assigned
  * to its `fn` property.<br />
  * These functions will be called on each update, this means that you must
  * make sure they are performant enough to avoid performance bottlenecks.
@@ -36564,7 +36564,7 @@ function inner(data) {
  */
 var modifiers = {
   /**
-   * Modifier used to shift the popper on the start or end of its reference
+   * Edit used to shift the popper on the start or end of its reference
    * element.<br />
    * It will read the variation of the `placement` property.<br />
    * It can be one either `-end` or `-start`.
@@ -36574,14 +36574,14 @@ var modifiers = {
   shift: {
     /** @prop {number} order=100 - Index used to define the order of execution */
     order: 100,
-    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
+    /** @prop {Boolean} enabled=true - Whether the edit is enabled or not */
     enabled: true,
     /** @prop {ModifierFn} */
     fn: shift
   },
 
   /**
-   * The `offset` modifier can shift your popper on both its axis.
+   * The `offset` edit can shift your popper on both its axis.
    *
    * It accepts the following units:
    * - `px` or unit-less, interpreted as pixels
@@ -36612,7 +36612,7 @@ var modifiers = {
    * '-10px + 5vh, 5px - 6%'
    * ```
    * > **NB**: If you desire to apply offsets to your poppers in a way that may make them overlap
-   * > with their reference element, unfortunately, you will have to disable the `flip` modifier.
+   * > with their reference element, unfortunately, you will have to disable the `flip` edit.
    * > You can read more on this at this [issue](https://github.com/FezVrasta/popper.js/issues/373).
    *
    * @memberof modifiers
@@ -36621,18 +36621,18 @@ var modifiers = {
   offset: {
     /** @prop {number} order=200 - Index used to define the order of execution */
     order: 200,
-    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
+    /** @prop {Boolean} enabled=true - Whether the edit is enabled or not */
     enabled: true,
     /** @prop {ModifierFn} */
     fn: offset,
     /** @prop {Number|String} offset=0
-     * The offset value as described in the modifier description
+     * The offset value as described in the edit description
      */
     offset: 0
   },
 
   /**
-   * Modifier used to prevent the popper from being positioned outside the boundary.
+   * Edit used to prevent the popper from being positioned outside the boundary.
    *
    * A scenario exists where the reference itself is not within the boundaries.<br />
    * We can say it has "escaped the boundaries" — or just "escaped".<br />
@@ -36651,7 +36651,7 @@ var modifiers = {
   preventOverflow: {
     /** @prop {number} order=300 - Index used to define the order of execution */
     order: 300,
-    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
+    /** @prop {Boolean} enabled=true - Whether the edit is enabled or not */
     enabled: true,
     /** @prop {ModifierFn} */
     fn: preventOverflow,
@@ -36670,14 +36670,14 @@ var modifiers = {
     padding: 5,
     /**
      * @prop {String|HTMLElement} boundariesElement='scrollParent'
-     * Boundaries used by the modifier. Can be `scrollParent`, `window`,
+     * Boundaries used by the edit. Can be `scrollParent`, `window`,
      * `viewport` or any DOM element.
      */
     boundariesElement: 'scrollParent'
   },
 
   /**
-   * Modifier used to make sure the reference and its popper stay near each other
+   * Edit used to make sure the reference and its popper stay near each other
    * without leaving any gap between the two. Especially useful when the arrow is
    * enabled and you want to ensure that it points to its reference element.
    * It cares only about the first axis. You can still have poppers with margin
@@ -36688,14 +36688,14 @@ var modifiers = {
   keepTogether: {
     /** @prop {number} order=400 - Index used to define the order of execution */
     order: 400,
-    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
+    /** @prop {Boolean} enabled=true - Whether the edit is enabled or not */
     enabled: true,
     /** @prop {ModifierFn} */
     fn: keepTogether
   },
 
   /**
-   * This modifier is used to move the `arrowElement` of the popper to make
+   * This edit is used to move the `arrowElement` of the popper to make
    * sure it is positioned between the reference element and its popper element.
    * It will read the outer size of the `arrowElement` node to detect how many
    * pixels of conjunction are needed.
@@ -36707,7 +36707,7 @@ var modifiers = {
   arrow: {
     /** @prop {number} order=500 - Index used to define the order of execution */
     order: 500,
-    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
+    /** @prop {Boolean} enabled=true - Whether the edit is enabled or not */
     enabled: true,
     /** @prop {ModifierFn} */
     fn: arrow,
@@ -36716,12 +36716,12 @@ var modifiers = {
   },
 
   /**
-   * Modifier used to flip the popper's placement when it starts to overlap its
+   * Edit used to flip the popper's placement when it starts to overlap its
    * reference element.
    *
-   * Requires the `preventOverflow` modifier before it in order to work.
+   * Requires the `preventOverflow` edit before it in order to work.
    *
-   * **NOTE:** this modifier will interrupt the current update cycle and will
+   * **NOTE:** this edit will interrupt the current update cycle and will
    * restart it if it detects the need to flip the placement.
    * @memberof modifiers
    * @inner
@@ -36729,7 +36729,7 @@ var modifiers = {
   flip: {
     /** @prop {number} order=600 - Index used to define the order of execution */
     order: 600,
-    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
+    /** @prop {Boolean} enabled=true - Whether the edit is enabled or not */
     enabled: true,
     /** @prop {ModifierFn} */
     fn: flip,
@@ -36771,8 +36771,8 @@ var modifiers = {
   },
 
   /**
-   * Modifier used to make the popper flow toward the inner of the reference element.
-   * By default, when this modifier is disabled, the popper will be placed outside
+   * Edit used to make the popper flow toward the inner of the reference element.
+   * By default, when this edit is disabled, the popper will be placed outside
    * the reference element.
    * @memberof modifiers
    * @inner
@@ -36780,26 +36780,26 @@ var modifiers = {
   inner: {
     /** @prop {number} order=700 - Index used to define the order of execution */
     order: 700,
-    /** @prop {Boolean} enabled=false - Whether the modifier is enabled or not */
+    /** @prop {Boolean} enabled=false - Whether the edit is enabled or not */
     enabled: false,
     /** @prop {ModifierFn} */
     fn: inner
   },
 
   /**
-   * Modifier used to hide the popper when its reference element is outside of the
+   * Edit used to hide the popper when its reference element is outside of the
    * popper boundaries. It will set a `x-out-of-boundaries` attribute which can
    * be used to hide with a CSS selector the popper when its reference is
    * out of boundaries.
    *
-   * Requires the `preventOverflow` modifier before it in order to work.
+   * Requires the `preventOverflow` edit before it in order to work.
    * @memberof modifiers
    * @inner
    */
   hide: {
     /** @prop {number} order=800 - Index used to define the order of execution */
     order: 800,
-    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
+    /** @prop {Boolean} enabled=true - Whether the edit is enabled or not */
     enabled: true,
     /** @prop {ModifierFn} */
     fn: hide
@@ -36809,11 +36809,11 @@ var modifiers = {
    * Computes the style that will be applied to the popper element to gets
    * properly positioned.
    *
-   * Note that this modifier will not touch the DOM, it just prepares the styles
-   * so that `applyStyle` modifier can apply it. This separation is useful
+   * Note that this edit will not touch the DOM, it just prepares the styles
+   * so that `applyStyle` edit can apply it. This separation is useful
    * in case you need to replace `applyStyle` with a custom implementation.
    *
-   * This modifier has `850` as `order` value to maintain backward compatibility
+   * This edit has `850` as `order` value to maintain backward compatibility
    * with previous versions of Popper.js. Expect the modifiers ordering method
    * to change in future major versions of the library.
    *
@@ -36823,7 +36823,7 @@ var modifiers = {
   computeStyle: {
     /** @prop {number} order=850 - Index used to define the order of execution */
     order: 850,
-    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
+    /** @prop {Boolean} enabled=true - Whether the edit is enabled or not */
     enabled: true,
     /** @prop {ModifierFn} */
     fn: computeStyle,
@@ -36850,14 +36850,14 @@ var modifiers = {
   /**
    * Applies the computed styles to the popper element.
    *
-   * All the DOM manipulations are limited to this modifier. This is useful in case
+   * All the DOM manipulations are limited to this edit. This is useful in case
    * you want to integrate Popper.js inside a framework or view library and you
    * want to delegate all the DOM manipulations to it.
    *
-   * Note that if you disable this modifier, you must make sure the popper element
+   * Note that if you disable this edit, you must make sure the popper element
    * has its position set to `absolute` before Popper.js can do its work!
    *
-   * Just disable this modifier and define your own to achieve the desired effect.
+   * Just disable this edit and define your own to achieve the desired effect.
    *
    * @memberof modifiers
    * @inner
@@ -36865,14 +36865,14 @@ var modifiers = {
   applyStyle: {
     /** @prop {number} order=900 - Index used to define the order of execution */
     order: 900,
-    /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
+    /** @prop {Boolean} enabled=true - Whether the edit is enabled or not */
     enabled: true,
     /** @prop {ModifierFn} */
     fn: applyStyle,
     /** @prop {Function} */
     onLoad: applyStyleOnLoad,
     /**
-     * @deprecated since version 1.10.0, the property moved to `computeStyle` modifier
+     * @deprecated since version 1.10.0, the property moved to `computeStyle` edit
      * @prop {Boolean} gpuAcceleration=true
      * If true, it uses the CSS 3D transformation to position the popper.
      * Otherwise, it will use the `top` and `left` properties
@@ -36888,9 +36888,9 @@ var modifiers = {
  * @property {Object} data.instance The Popper.js instance
  * @property {String} data.placement Placement applied to popper
  * @property {String} data.originalPlacement Placement originally defined on init
- * @property {Boolean} data.flipped True if popper has been flipped by flip modifier
+ * @property {Boolean} data.flipped True if popper has been flipped by flip edit
  * @property {Boolean} data.hide True if the reference element is out of boundaries, useful to know when to hide the popper
- * @property {HTMLElement} data.arrowElement Node used as arrow by arrow modifier
+ * @property {HTMLElement} data.arrowElement Node used as arrow by arrow edit
  * @property {Object} data.styles Any CSS property defined here will be applied to the popper. It expects the JavaScript nomenclature (eg. `marginBottom`)
  * @property {Object} data.arrowStyles Any CSS property defined here will be applied to the popper arrow. It expects the JavaScript nomenclature (eg. `marginBottom`)
  * @property {Object} data.boundaries Offsets of the popper boundaries
@@ -37034,7 +37034,7 @@ var Popper = function () {
     });
 
     // modifiers have the ability to execute arbitrary code when Popper.js get inited
-    // such code is executed in the same order of its modifier
+    // such code is executed in the same order of its edit
     // they could add new properties to their options configuration
     // BE AWARE: don't add options to `options.modifiers.name` but to `modifierOptions`!
     this.modifiers.forEach(function (modifierOptions) {
@@ -39403,7 +39403,7 @@ function isBoolean () {
 
 function handleError (err, vm, info) {
   // Deactivate deps tracking while processing error handler to avoid possible infinite rendering.
-  // See: https://github.com/vuejs/vuex/issues/1505
+  // View: https://github.com/vuejs/vuex/issues/1505
   pushTarget();
   try {
     if (vm) {
@@ -39626,7 +39626,7 @@ if (true) {
       'referenced during render. Make sure that this property is reactive, ' +
       'either in the data option, or for class-based components, by ' +
       'initializing the property. ' +
-      'See: https://vuejs.org/v2/guide/reactivity.html#Declaring-Reactive-Properties.',
+      'View: https://vuejs.org/v2/guide/reactivity.html#Declaring-Reactive-Properties.',
       target
     );
   };
@@ -39636,7 +39636,7 @@ if (true) {
       "Property \"" + key + "\" must be accessed with \"$data." + key + "\" because " +
       'properties starting with "$" or "_" are not proxied in the Vue instance to ' +
       'prevent conflicts with Vue internals. ' +
-      'See: https://vuejs.org/v2/api/#data',
+      'View: https://vuejs.org/v2/api/#data',
       target
     );
   };
@@ -39649,7 +39649,7 @@ if (true) {
     config.keyCodes = new Proxy(config.keyCodes, {
       set: function set (target, key, value) {
         if (isBuiltInModifier(key)) {
-          warn(("Avoid overwriting built-in modifier in config.keyCodes: ." + key));
+          warn(("Avoid overwriting built-in edit in config.keyCodes: ." + key));
           return false
         } else {
           target[key] = value;
@@ -40505,7 +40505,7 @@ function bindDynamicKeys (baseObj, values) {
   return baseObj
 }
 
-// helper to dynamically append modifier runtime markers to event names.
+// helper to dynamically append edit runtime markers to event names.
 // ensure only append when value is already string, otherwise it will be cast
 // to string and cause the type check to miss.
 function prependModifier (value, symbol) {
@@ -40818,7 +40818,7 @@ function createComponent (
   // extract listeners, since these needs to be treated as
   // child component listeners instead of DOM listeners
   var listeners = data.on;
-  // replace with listeners with .native modifier
+  // replace with listeners with .native edit
   // so it gets processed during parent component patch.
   data.on = data.nativeOn;
 
@@ -40993,7 +40993,7 @@ function _createElement (
       // platform built-in elements
       if ( true && isDef(data) && isDef(data.nativeOn)) {
         warn(
-          ("The .native modifier for v-on is only valid on components but it was used on <" + tag + ">."),
+          ("The .native edit for v-on is only valid on components but it was used on <" + tag + ">."),
           context
         );
       }
@@ -44582,7 +44582,7 @@ function addHandler (
   dynamic
 ) {
   modifiers = modifiers || emptyObject;
-  // warn prevent and passive modifier
+  // warn prevent and passive edit
   /* istanbul ignore if */
   if (
      true && warn &&
@@ -44613,7 +44613,7 @@ function addHandler (
     }
   }
 
-  // check capture modifier
+  // check capture edit
   if (modifiers.capture) {
     delete modifiers.capture;
     name = prependModifierMarker('!', name, dynamic);
@@ -46654,7 +46654,7 @@ if (inBrowser) {
       console[console.info ? 'info' : 'log'](
         "You are running Vue in development mode.\n" +
         "Make sure to turn on production mode when deploying for production.\n" +
-        "See more tips at https://vuejs.org/guide/deployment.html"
+        "View more tips at https://vuejs.org/guide/deployment.html"
       );
     }
   }, 0);
@@ -47870,7 +47870,7 @@ function processAttrs (el) {
       el.hasBindings = true;
       // modifiers
       modifiers = parseModifiers(name.replace(dirRE, ''));
-      // support .foo shorthand syntax for the .prop modifier
+      // support .foo shorthand syntax for the .prop edit
       if (modifiers) {
         name = name.replace(modifierRE, '');
       }
@@ -48677,7 +48677,7 @@ function genFor (
     state.warn(
       "<" + (el.tag) + " v-for=\"" + alias + " in " + exp + "\">: component lists rendered with " +
       "v-for should have explicit keys. " +
-      "See https://vuejs.org/guide/list.html#key for more info.",
+      "View https://vuejs.org/guide/list.html#key for more info.",
       el.rawAttrsMap['v-for'],
       true /* tip */
     );

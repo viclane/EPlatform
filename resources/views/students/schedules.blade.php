@@ -8,7 +8,7 @@
                     <div class="card-header d-flex">
                         List of my schedules
                         @if ($active_course)
-                         du cours {{ $active_course->intitule }}
+                         du cours {{ $active_course->title }}
                         @endif
 
                         <div class="col-md-6 ml-auto">
@@ -41,7 +41,7 @@
                                         <option value="" @if($active_course == null) selected @endif>All $courses</option>
                                         @foreach ($courses as $course)
                                             <option value="{{ $course->id }}" @if($active_course && $active_course->id == $course->id) selected @endif>
-                                                {{ $course->intitule }}
+                                                {{ $course->title }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -66,13 +66,13 @@
                             <tbody>
                             @foreach ($schedules as $schedule)
                                 <tr>
-                                    <td>{{ $schedule->course->intitule }}</td>
-                                    <td>{{ $schedule->date_start }}</td>
-                                    <td>{{ $schedule->date_fin }}</td>
+                                    <td>{{ $schedule->course->title }}</td>
+                                    <td>{{ $schedule->start_date }}</td>
+                                    <td>{{ $schedule->end_date }}</td>
                                     <td class="pb-2" style="width: 25%;">
                                         <a href="{{ route('students.courses.show', ['course' => $schedule->course->id]) }}" class="btn btn-primary btn-sm mr-1 mb-1">
                                             <i class="fa fa-eye"></i>
-                                            Voir le cours
+                                            View a course
                                         </a>
                                     </td>
                                 </tr>

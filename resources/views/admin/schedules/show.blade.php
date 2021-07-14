@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => "Affichage du schedule du cours {$schedule->course->intitule}"])
+@extends('layouts.app', ['title' => "Affichage du schedule du cours {$schedule->course->title}"])
 
 @section('content')
     <div class="container">
@@ -14,13 +14,13 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        Date de start: {{ $schedule->date_start }}
+                        Start date: {{ $schedule->start_date }}
                         <br/>
-                        Date de end: {{ $schedule->date_fin }}
+                        End date: {{ $schedule->end_date }}
                         <br/>
                         Cours:
                         <a href="{{ route('admin.courses.show', ['course' => $schedule->course->id]) }}">
-                            {{ $schedule->course->intitule }}
+                            {{ $schedule->course->title }}
                         </a>
                         <br/>
                         instructor:

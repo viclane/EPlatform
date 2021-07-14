@@ -98,7 +98,7 @@ class UserController extends Controller
             return redirect()->route('admin.users.index')->with(['success' => 'User has been added !']);
         }
 
-        return redirect('/', 500)->with(['error' => 'An unexpected error occured']);
+        return redirect('/', 500)->with(['error' => 'An unexpected error has occured']);
     }
 
     public function show(User $user)
@@ -148,7 +148,7 @@ class UserController extends Controller
             return redirect()->route('admin.users.index')->with(['success' => 'User has been modified!']);
         }
 
-        return redirect('/', 500)->with(['error' => 'An unexpected error occured']);
+        return redirect('/', 500)->with(['error' => 'An unexpected error has occured']);
     }
 
     public function forceDelete(User $user)
@@ -157,7 +157,7 @@ class UserController extends Controller
             return redirect()->route('admin.users.index');
         }
 
-        return redirect('/', 500)->with(['error' => 'An unexpected error occured']);
+        return redirect('/', 500)->with(['error' => 'An unexpected error has occured']);
     }
 
     public function destroy(User $user)
@@ -166,7 +166,7 @@ class UserController extends Controller
             return redirect()->route('admin.users.index');
         }
 
-        return redirect('/', 500)->with(['error' => 'An unexpected error occured']);
+        return redirect('/', 500)->with(['error' => 'An unexpected error has occured']);
     }
 
     public function getAvailableCourses($user_id = null)

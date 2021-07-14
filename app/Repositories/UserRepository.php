@@ -27,7 +27,7 @@ class UserRepository
     public function findUser(
         $q = null,
         $type = null,
-        $sort = 'nom',
+        $sort = 'first_name',
         $order = 'desc',
         $nb = null,
         $current = null
@@ -39,11 +39,11 @@ class UserRepository
         }
 
         if ($q) {
-            $query = $query->whereRaw("(nom LIKE '%{$q}%' OR prenom LIKE '%{$q}%')");
-//            $query = $query->whereRaw("(nom LIKE '%{$q}%' OR prenom LIKE '%{$q}%' OR login LIKE '%{$q}%')");
+            $query = $query->whereRaw("(first_name LIKE '%{$q}%' OR last_name LIKE '%{$q}%')");
+//            $query = $query->whereRaw("(first_name LIKE '%{$q}%' OR last_name LIKE '%{$q}%' OR login LIKE '%{$q}%')");
         }
 
-        $sort = $sort ?? 'nom';
+        $sort = $sort ?? 'first_name';
 
         if (!$order || !in_array($order, ['asc', 'desc'])) {
             $order = 'desc';

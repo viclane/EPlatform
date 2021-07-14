@@ -7,16 +7,16 @@
 
             <div class="card">
                 <div class="card-header d-flex">
-                    Utilisateurs an attente de validatation
+                    User awaiting validation
 
                     <div class="col-md-6 ml-auto">
                         <form action="" method="get" class="form-inline">
                                 <input type="text" name="query" class="form-control mr-2 mb-2" value="{{ old('query', $query ?? '') }}"/>
                                 <div class="form-group mr-2 mb-2">
                                     <select class="form-control" name="type">
-                                        <option value="" @if($type == null) selected @endif>Tout le monde</option>
+                                        <option value="" @if($type == null) selected @endif>Everybody</option>
                                         <option value="instructor" @if($type == 'instructor') selected @endif>instructors</option>
-                                        <option value="student" @if($type == 'student') selected @endif>Étudiants</option>
+                                        <option value="student" @if($type == 'student') selected @endif>Students</option>
                                     </select>
                                 </div>
                             <button type="submit" class="btn btn-primary mb-2">Search</button>
@@ -26,7 +26,7 @@
                     <div class="ml-auto">
                         <a href="{{ route('admin.users.create') }}" class="btn btn-outline-primary">
                             <i class="fa fa-plus"></i>
-                            Ajouter un nouveau utilisateur
+                            Add a new user
                         </a>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                     <table class="table table-responsive">
                         <thead>
                             <tr>
-                                <th scope="col">Nom</th>
+                                <th scope="col">Name</th>
                                 <th scope="col">Login</th>
                                 <th scope="col">Role</th>
                                 <th scope="col">Formation</th>
@@ -50,11 +50,11 @@
                                 <td>{{ $user->full_name }}</td>
                                 <td>{{ $user->login }}</td>
                                 <td>{{ $user->formation_id ? 'student' : 'instructor' }}</td>
-                                <td>{{ $user->formation ? $user->formation->intitule : '' }}</td>
+                                <td>{{ $user->formation ? $user->formation->title : '' }}</td>
                                 <td class="pb-2" style="width: 25%;">
                                     <a href="{{ route('admin.users.show', ['user' => $user->id]) }}" class="btn btn-primary btn-sm mr-1 mb-1">
                                         <i class="fa fa-eye"></i>
-                                        Voir
+                                        View
                                     </a>
                                     <form action="{{ route('admin.users.update', ['user' => $user->id]) }}" method="POST"
                                           class="d-inline-block">
@@ -64,7 +64,7 @@
                                         <input type="hidden" name="formation_id" value="{{ $user->formation_id }}"/>
                                         <button type="submit" class="btn btn-outline-success btn-sm mr-1 mb-1">
                                             <i class="fa fa-check"></i>
-                                            Accepter
+                                            Accept
                                         </button>
                                     </form>
                                     <form action="{{ route('admin.users.destroy', ['user' => $user->id]) }}" method="POST"
@@ -73,7 +73,7 @@
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm mr-1 mb-1">
                                             <i class="fa fa-trash-alt"></i>
-                                            Refuser
+                                            Refuse
                                         </button>
                                     </form>
                                 </td>

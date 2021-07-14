@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => "Course display {$course->intitule}"])
+@extends('layouts.app', ['title' => "Course display {$course->title}"])
 
 @php
     $myCourses = Auth::user()->courses->pluck('id')->toArray();
@@ -16,7 +16,7 @@
                             <a href="{{ route('instructors.schedules.index', ['course_id' => $course->id]) }}"
                                 class="btn btn-secondary btn-sm mr-1 mb-1">
                                 <i class="fa fa-clock"></i>
-                                See a schedule
+                                View a schedule
                             </a>
 
                             <a href="{{ route('instructors.schedules.create', ['course_id' => $course->id]) }}"
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        Intitule: {{ $course->intitule }}
+                        Title: {{ $course->title }}
                         <br/>
                        Instructor: @if($course->instructor)
                         <a href="{{ route('profile.show', ['user' => $course->instructor->id]) }}">

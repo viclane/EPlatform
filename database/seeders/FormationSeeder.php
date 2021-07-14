@@ -18,7 +18,7 @@ class FormationSeeder extends Seeder
         if (Formation::count() < 3) {
             for ($i = 0; $i < 3; $i++) {
                 Formation::create([
-                    'intitule' => 'Formation ' . $i,
+                    'title' => 'Formation ' . $i,
                 ]);
             }
         }

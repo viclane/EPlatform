@@ -28,7 +28,7 @@ class CourseController extends Controller
         $active_instructor= null;
 
         if ($query_search = $request->get('query')) {
-            $courses = $courses->where('intitule', 'LIKE', "%{$query_search}%");
+            $courses = $courses->where('title', 'LIKE', "%{$query_search}%");
         }
 
         if ($instructor_id = $request->get('instructor_id')) {
@@ -77,7 +77,7 @@ class CourseController extends Controller
             return redirect()->route('admin.courses.index')->with(['success' => 'The course has been added!']);
         }
 
-        return redirect('/', 500)->with(['error' => 'An unexpected error occured']);
+        return redirect('/', 500)->with(['error' => 'An unexpected error has occured']);
     }
 
     public function show(Course $course)
@@ -105,7 +105,7 @@ class CourseController extends Controller
             return redirect()->route('admin.courses.index')->with(['success' => 'The course has been modified !']);
         }
 
-        return redirect('/', 500)->with(['error' => 'An unexpected error occured']);
+        return redirect('/', 500)->with(['error' => 'An unexpected error has occured']);
     }
 
     public function destroy(Course $course)
@@ -114,6 +114,6 @@ class CourseController extends Controller
             return redirect()->route('admin.courses.index')->with(['success' => 'The course has been deleted !']);
         }
 
-        return redirect('/', 500)->with(['error' => 'An unexpected error occured']);
+        return redirect('/', 500)->with(['error' => 'An unexpected error has occured']);
     }
 }

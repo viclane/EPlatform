@@ -10,7 +10,7 @@
                 <div class="card-body">
                     @if ($errors->has('request_type'))
                         <div class="p-2 alert alert-danger">
-                            Une erreur inattendue s'est produite
+                            An unexpected error has occured
                         </div>
                     @endif
 
@@ -20,12 +20,12 @@
                         @method('put')
 
                         <div class="form-group row">
-                            <label for="nom" class="col-md-4 col-form-label text-md-right">{{ __('Nom') }}</label>
+                            <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('Nom') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nom" type="text" class="form-control @error('nom') is-invalid @enderror" name="nom" value="{{ $user->nom }}" required autocomplete="nom" autofocus>
+                                <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ $user->first_name }}" required autocomplete="first_name" autofocus>
 
-                                @error('nom')
+                                @error('first_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -34,12 +34,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="prenom" class="col-md-4 col-form-label text-md-right">{{ __('Prenom') }}</label>
+                            <label for="last_name" class="col-md-4 col-form-label text-md-right">{{ __('Prenom') }}</label>
 
                             <div class="col-md-6">
-                                <input id="prenom" type="text" class="form-control @error('prenom') is-invalid @enderror" name="prenom" value="{{ $user->prenom }}" required autocomplete="prenom">
+                                <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ $user->last_name }}" required autocomplete="last_name">
 
-                                @error('prenom')
+                                @error('last_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -66,10 +66,10 @@
 {{--                                <div class="col-md-6">--}}
 {{--                                    <select name="formation_id" id="formation_id"--}}
 {{--                                            class="form-control @error('formation_id') is-invalid @enderror" required>--}}
-{{--                                        <option value="" disabled>Choisir une formation</option>--}}
+{{--                                        <option value="" disabled>Choose a formation</option>--}}
 {{--                                        @foreach($formations as $formation)--}}
 {{--                                        <option value="{{ $formation->id }}" @if($user->formation_id == $formation->id) selected @endif>--}}
-{{--                                            {{ $formation->intitule }}--}}
+{{--                                            {{ $formation->title }}--}}
 {{--                                        </option>--}}
 {{--                                        @endforeach--}}
 {{--                                    </select>--}}
@@ -122,7 +122,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('Modifier') }}
+                                    {{ __('Edit') }}
                                 </button>
                             </div>
                         </div>

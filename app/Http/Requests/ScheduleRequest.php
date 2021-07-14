@@ -9,17 +9,17 @@ use Carbon\Carbon;
 
 class ScheduleRequest extends BaseRequest
 {
-    public $date_start = '';
-    public $date_fin = '';
+    public $start_date = '';
+    public $end_date = '';
 
     public function rules()
     {
         return [
             'course_id' => 'nullable|exists:cours,id',
             'start_date' => array('required', 'bail', 'date_format:"d/m/Y"', 'after:yesterday'),
-            'start_heure' => array('required', 'bail', 'date_format:"H:i"', function ($attribute, $value, $fail) {
+            'start_time' => array('required', 'bail', 'date_format:"H:i"', function ($attribute, $value, $fail) {
                 if (self::isInvalideDate($this->start_date)) {
-                    $fail('Date de start invalide');
+                    $fail('Invalid start date');
                 } else {
 
                     $formDate = Carbon::createFromFormat('d/m/Y H:i', $this->start_date . ' 23:59');
@@ -29,15 +29,15 @@ class ScheduleRequest extends BaseRequest
                         $verifDate = clone $formDate;
 
                         if ($verifDate->addMinutes(-30)->isPast()) {
-                            $fail('Le temps est invalide et doit etre en avance d\'au moins 30 minutes');
+                            $fail('The time is invalid and must be at least 30 minutes ahead');
                         }
 
-                        $schedule = Schedule::whereRaw("course_id = {$this->course_id} AND date_start <= '{$formDate->format('Y-m-d H:i')}' AND date_fin > '{$formDate->format('Y-m-d H:i')}'")->first();
+                        $schedule = Schedule::whereRaw("course_id = {$this->course_id} AND start_date <= '{$formDate->format('Y-m-d H:i')}' AND end_date > '{$formDate->format('Y-m-d H:i')}'")->first();
                         if ($schedule) {
                             $isActualSchedule = $this->route('schedule') ? $this->route('schedule')->id == $schedule->id : false;
 
                             if (!$isActualSchedule) {
-                                $fail("La date et heure appartiennent a un intervalle deja planifie, commencant a {$schedule->date_start} et finissant a {$schedule->date_fin} pour ce cours");
+                                $fail("The date and time belong to an interval already scheduled, starting at {$schedule->start_date} and ending at {$schedule->end_date} for this course");
                             }
                         }
                     }
@@ -48,11 +48,11 @@ class ScheduleRequest extends BaseRequest
                 $date = $this->end_date ?? $this->start_date;
 
                 if (self::isInvalideDate($this->start_date)) {
-                    $fail('Date de start invalide');
+                    $fail('Invalid start date');
                 } else if ($date !== $this->start_date && self::isInvalideDate($date)) {
-                    $fail('Date de end invalide');
+                    $fail('Invalid end date');
                 } else {
-                    $startDate = Carbon::createFromFormat('d/m/Y H:i', $this->start_date . ' ' . $this->start_heure);
+                    $startDate = Carbon::createFromFormat('d/m/Y H:i', $this->start_date . ' ' . $this->start_time);
                     $formDate = Carbon::createFromFormat('d/m/Y H:i', $date . ' 23:59');
 
                     if (!$formDate->isPast()) {
@@ -64,17 +64,17 @@ class ScheduleRequest extends BaseRequest
                             $fail('La date et l\'heure de end doivent etre superieur a la date de start d\'au moins 20 minutes');
                         }
 
-                        $schedule = Schedule::whereRaw("course_id = {$this->course_id} AND date_start < '{$formDate->format('Y-m-d H:i')}' AND date_fin >= '{$formDate->format('Y-m-d H:i')}'")->first();
+                        $schedule = Schedule::whereRaw("course_id = {$this->course_id} AND start_date < '{$formDate->format('Y-m-d H:i')}' AND end_date >= '{$formDate->format('Y-m-d H:i')}'")->first();
                         if ($schedule) {
                             $isActualSchedule = $this->route('schedule') ? $this->route('schedule')->id == $schedule->id : false;
 
                             if (!$isActualSchedule) {
-                                $fail("La date et l'heure appartiennent a un intervalle deja planifie, commencant a {$schedule->date_start} pour ce cours");
+                                $fail("La date et l'heure appartiennent a un intervalle deja planifie, commencant a {$schedule->start_date} pour ce cours");
                             }
                         }
 
-                        $this->date_start = $startDate->format('Y-m-d H:i:s');
-                        $this->date_fin = $formDate->format('Y-m-d H:i:s');
+                        $this->start_date = $startDate->format('Y-m-d H:i:s');
+                        $this->end_date = $formDate->format('Y-m-d H:i:s');
                     }
                 }
             }),

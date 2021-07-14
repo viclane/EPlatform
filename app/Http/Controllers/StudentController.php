@@ -41,7 +41,7 @@ class StudentController extends Controller
         $courses = $request->user()->courses();
 
         if ($query_string = $request->get('query')) {
-            $courses = $courses->where('intitule', 'LIKE', '%' . $query_string . '%');
+            $courses = $courses->where('title', 'LIKE', '%' . $query_string . '%');
         }
 
         return view('students.courses', [
@@ -61,7 +61,7 @@ class StudentController extends Controller
         }
 
         if ($query_string = $request->get('query')) {
-            $courses = $courses->where('intitule', 'LIKE', '%' . $query_string . '%');
+            $courses = $courses->where('title', 'LIKE', '%' . $query_string . '%');
         }
 
         return view('students.showFormCourses', [

@@ -15,7 +15,7 @@ class Formation extends Model
      * @var array
      */
     protected $fillable = [
-        'intitule'
+        'title'
     ];
 
     protected $with = [
