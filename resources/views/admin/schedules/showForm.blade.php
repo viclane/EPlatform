@@ -1,7 +1,10 @@
 {{-- Create a schedule --}}
 @php
     if ($editing) {
-        \Illuminate\Support\Facades\Request::merge($schedule->toArray());
+        $data = $schedule->toArray();
+        unset($data['start_date']);
+        unset($data['end_date']);
+        \Illuminate\Support\Facades\Request::merge($data);
         \Illuminate\Support\Facades\Request::flash();
     }
 @endphp
@@ -21,17 +24,16 @@
                 <div class="col-md-8 mx-auto">
                     <div class="card">
                         <div class="card-header">
-                            {{ $editing ? 'Edit schedule du '.$schedule->start_date : 'Add schedule' }}
+                            {{ $editing ? 'Edit schedule du '.$schedule->format_start_date : 'Add schedule' }}
                         </div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="start_date">Start date</label>
-                                        <input type="text" placeholder="dd/mm/yyyy" name="start_date" id="start_date" 
-                                        value="{{ old('start_date', $schedule->start_date) }}" class="form-control @error('start_date') 
-                                        is-invalid @enderror" required>
-
+                                        <label for="start_date">Start date {{$schedule->format_start_date}}</label>
+                                        <input type="text" placeholder="yyyy/mm/dd" id="start_date" 
+                                            name="start_date" value="{{ old('start_date', $schedule->format_start_date) }}" 
+                                            class="form-control @error('start_date') is-invalid @enderror" required/>
                                         @error('start_date')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -41,7 +43,9 @@
 
                                     <div class="form-group">
                                         <label for="start_time">Start time</label>
-                                        <input type="text" placeholder="10:20" name="start_time" id="start_time" value="{{ old('start_time', $schedule->start_time) }}" class="form-control @error('start_time') is-invalid @enderror" required>
+                                        <input type="text" placeholder="10:20" name="start_time" id="start_time" 
+                                            value="{{ old('start_time', $schedule->start_time) }}" 
+                                            class="form-control @error('start_time') is-invalid @enderror" required/>
 
                                         @error('start_time')
                                         <span class="invalid-feedback" role="alert">
@@ -56,7 +60,9 @@
                                             End date
                                             <small>Laisser vide si la date est equivalente a la date de start</small>
                                         </label>
-                                        <input type="text" placeholder="dd/mm/yyyy" name="end_date" id="end_date" value="{{ old('end_date', $schedule->end_date) }}" class="form-control @error('end_date') is-invalid @enderror">
+                                        <input type="text" placeholder="yyyy/mm/dd" name="end_date" id="end_date" 
+                                            value="{{ old('end_date', $schedule->format_end_date) }}" 
+                                            class="form-control @error('end_date') is-invalid @enderror"/>
 
                                         @error('end_date')
                                         <span class="invalid-feedback" role="alert">
@@ -66,10 +72,12 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="fin_heure">End time</label>
-                                        <input type="text" placeholder="10:20" name="fin_heure" id="fin_heure" value="{{ old('fin_heure', $schedule->fin_heure) }}" class="form-control @error('fin_heure') is-invalid @enderror" required>
+                                        <label for="end_time">End time</label>
+                                        <input type="text" placeholder="10:20" name="end_time" id="end_time" 
+                                            value="{{ old('end_time', $schedule->end_time) }}" 
+                                            class="form-control @error('end_time') is-invalid @enderror" required/>
 
-                                        @error('fin_heure')
+                                        @error('end_time')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>

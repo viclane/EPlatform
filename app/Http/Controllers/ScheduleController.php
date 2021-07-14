@@ -122,8 +122,9 @@ class ScheduleController extends Controller
      * @param array $data
      * @param ScheduleRequest $request
      */
-    public function setGoodDate(array &$data, $request)
+    public function setGoodDate(array &$data, ScheduleRequest $request)
     {
-        $data['start_date'] = $request->start_date;
-        $data['end_date'] = $request->end_date;
-    }}
+        $data['start_date'] = $request->final_start_date;
+        $data['end_date'] = $request->final_end_date;
+    }
+}

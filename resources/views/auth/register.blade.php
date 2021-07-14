@@ -19,10 +19,11 @@
                             @csrf
 
                             <div class="form-group row">
-                                <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('first_name') }}</label>
+                                <label for="first_name" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus>
+                                    <input id="first_name" type="text" class="form-control @error('first_name') is-invalid @enderror" 
+                                        name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name" autofocus>
 
                                     @error('first_name')
                                         <span class="invalid-feedback" role="alert">
@@ -33,7 +34,7 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="last_name" class="col-md-4 col-form-label text-md-right">{{ __('last_name') }}</label>
+                                <label for="last_name" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="last_name" type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name">
@@ -65,7 +66,7 @@
                                 <div class="col-md-6">
                                     <select name="formation_id" id="formation_id"
                                             class="form-control @error('formation_id') is-invalid @enderror" required>
-                                        <option value="" disabled>Choose a formation</option>
+                                        <option value="" @if(! old('formation_id')) selected @endif disabled>Choose a formation</option>
                                         @foreach($formations as $formation)
                                         <option value="{{ $formation->id }}" @if(old('formation_id') == $formation->id) selected @endif>
                                             {{ $formation->title }}

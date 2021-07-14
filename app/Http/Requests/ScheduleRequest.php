@@ -9,23 +9,23 @@ use Carbon\Carbon;
 
 class ScheduleRequest extends BaseRequest
 {
-    public $start_date = '';
-    public $end_date = '';
+    public $final_start_date = '';
+    public $final_end_date = '';
 
     public function rules()
     {
         return [
-            'course_id' => 'nullable|exists:cours,id',
-            'start_date' => array('required', 'bail', 'date_format:"d/m/Y"', 'after:yesterday'),
+            'course_id' => 'nullable|exists:courses,id',
+            'start_date' => array('required', 'bail', 'date_format:"Y/m/d"', 'after:yesterday'),
             'start_time' => array('required', 'bail', 'date_format:"H:i"', function ($attribute, $value, $fail) {
                 if (self::isInvalideDate($this->start_date)) {
                     $fail('Invalid start date');
                 } else {
 
-                    $formDate = Carbon::createFromFormat('d/m/Y H:i', $this->start_date . ' 23:59');
+                    $formDate = Carbon::createFromFormat('Y/m/d H:i', $this->start_date . ' 23:59');
 
-                    if (!$formDate->isPast()) {
-                        $formDate = Carbon::createFromFormat('d/m/Y H:i', $this->start_date . ' ' . $value);
+                    if (! $formDate->isPast()) {
+                        $formDate = Carbon::createFromFormat('Y/m/d H:i', $this->start_date . ' ' . $value);
                         $verifDate = clone $formDate;
 
                         if ($verifDate->addMinutes(-30)->isPast()) {
@@ -44,19 +44,18 @@ class ScheduleRequest extends BaseRequest
                 }
             }),
             'end_date' => array('nullable', 'bail', 'date', 'after_or_equal:' . $this->start_date),
-            'fin_heure' => array('required', 'bail', 'date_format:"H:i"', function ($attribute, $value, $fail) {
+            'end_time' => array('required', 'bail', 'date_format:"H:i"', function ($attribute, $value, $fail) {
                 $date = $this->end_date ?? $this->start_date;
-
                 if (self::isInvalideDate($this->start_date)) {
                     $fail('Invalid start date');
                 } else if ($date !== $this->start_date && self::isInvalideDate($date)) {
                     $fail('Invalid end date');
                 } else {
-                    $startDate = Carbon::createFromFormat('d/m/Y H:i', $this->start_date . ' ' . $this->start_time);
-                    $formDate = Carbon::createFromFormat('d/m/Y H:i', $date . ' 23:59');
+                    $startDate = Carbon::createFromFormat('Y/m/d H:i', $this->start_date . ' ' . $this->start_time);
+                    $formDate = Carbon::createFromFormat('Y/m/d H:i', $date . ' 23:59');
 
-                    if (!$formDate->isPast()) {
-                        $formDate = Carbon::createFromFormat('d/m/Y H:i', $date . ' ' . $value);
+                    if (! $formDate->isPast()) {
+                        $formDate = Carbon::createFromFormat('Y/m/d H:i', $date . ' ' . $value);
                         if ($formDate->getTimestamp() < $startDate->getTimestamp()) {
                             $fail('La date et l\'heure de end doivent etre superieur a la date de start');
                         }
@@ -73,15 +72,15 @@ class ScheduleRequest extends BaseRequest
                             }
                         }
 
-                        $this->start_date = $startDate->format('Y-m-d H:i:s');
-                        $this->end_date = $formDate->format('Y-m-d H:i:s');
+                        $this->final_start_date = $startDate->format('Y-m-d H:i:s');
+                        $this->final_end_date = $formDate->format('Y-m-d H:i:s');
                     }
                 }
             }),
         ];
     }
 
-    public static function isInvalideDate ($date, $format = 'd/m/Y') {
+    public static function isInvalideDate($date, $format = 'Y/m/d') {
         if (! is_string($date)) {
             return true;
         }

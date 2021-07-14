@@ -19,6 +19,7 @@ class Schedule extends Model
     ];
 
     protected $appends = [
+        'format_start_date', 'format_end_date',
         'start_time', 'end_time'
     ];
 
@@ -27,31 +28,31 @@ class Schedule extends Model
         return $this->belongsTo(Course::class, 'course_id');
     }
 
-    public function getStartDateAttribute()
+    public function getFormatStartDateAttribute()
     {
         return isset($this->start_date)
-            ? $this->attributes['start_date']->format('Y-m-d')
+            ? $this->start_date->format('Y/m/d')
             : null;
     }
 
-    public function getEndDateAttribute()
+    public function getFormatEndDateAttribute()
     {
         return isset($this->end_date)
-            ? $this->attributes['end_date']->format('Y-m-d')
+            ? $this->end_date->format('Y/m/d')
             : null;
     }
 
     public function getStartTimeAttribute()
     {
         return isset($this->start_date)
-            ? $this->attributes['start_date']->format('H:i')
+            ? $this->start_date->format('H:i')
             : null;
     }
 
     public function getEndTimeAttribute()
     {
         return isset($this->end_date)
-            ? $this->attributes['end_date']->format('H:i')
+            ? $this->end_date->format('H:i')
             : null;
     }
 }

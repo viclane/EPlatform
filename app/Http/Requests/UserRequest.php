@@ -22,7 +22,7 @@ class UserRequest extends BaseRequest
         $unique_login .= $user ? ',login,' . $user->id : '';
 
         return [
-            'fisrt_name' => $this->sometimes . 'required|string|max:40',
+            'first_name' => $this->sometimes . 'required|string|max:40',
             'last_name' => $this->sometimes . 'required|string|max:40',
             'login' => $this->sometimes . 'required|email|' . $unique_login,
             'formation_id' => ['required_if:type,student'],

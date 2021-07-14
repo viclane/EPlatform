@@ -28,7 +28,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="start_date">Start date</label>
-                                        <input type="text" placeholder="dd/mm/yyyy" name="start_date" id="start_date" value="{{ old('start_date', $schedule->start_date) }}" class="form-control @error('start_date') is-invalid @enderror" required>
+                                        <input type="text" placeholder="yyyy/mm/dd" name="start_date" id="start_date" value="{{ old('start_date', $schedule->start_date) }}" class="form-control @error('start_date') is-invalid @enderror" required>
 
                                         @error('start_date')
                                         <span class="invalid-feedback" role="alert">
@@ -54,7 +54,7 @@
                                             End date
                                             <small>Leave blank if the date is equivalent to the start date</small>
                                         </label>
-                                        <input type="text" placeholder="dd/mm/yyyy" name="end_date" id="end_date" value="{{ old('end_date', $schedule->end_date) }}" class="form-control @error('end_date') is-invalid @enderror">
+                                        <input type="text" placeholder="yyyy/mm/dd" name="end_date" id="end_date" value="{{ old('end_date', $schedule->end_date) }}" class="form-control @error('end_date') is-invalid @enderror">
 
                                         @error('end_date')
                                         <span class="invalid-feedback" role="alert">

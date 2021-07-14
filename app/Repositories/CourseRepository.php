@@ -7,6 +7,7 @@ use App\Models\Course;
 use App\Models\Schedule;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Carbon as CarbonInterface;
 
 class CourseRepository
 {
@@ -57,8 +58,8 @@ class CourseRepository
      */
     public function getCoursesSchedules(
         $course = null,
-        $dateStart = null,
-        $dateFin = null,
+        $startDate = null,
+        $endDate = null,
         $orderColumn = 'start_date',
         $order = 'DESC',
         $dateFormat = 'Y-m-d H:i'
@@ -68,7 +69,7 @@ class CourseRepository
         }
 
         if ($course) {
-            if (!($course instanceof Course)) {
+            if (! ($course instanceof Course)) {
                 throw new \Exception('Invalid course');
             }
 
@@ -77,13 +78,13 @@ class CourseRepository
             $schedules = Schedule::all();
         }
 
-        return self::schedulesFilter($schedules, $dateStart, $dateFin, false, $orderColumn, $order, $dateFormat);
+        return self::schedulesFilter($schedules, $startDate, $endDate, false, $orderColumn, $order, $dateFormat);
     }
 
     public function getUserCoursesSchedules(
         $course = null,
-        $dateStart = null,
-        $dateFin = null,
+        $startDate = null,
+        $endDate = null,
         $user = null,
         $orderColumn = 'start_date',
         $order = 'DESC',
@@ -99,7 +100,7 @@ class CourseRepository
             $schedules = [];
 
             if ($course) {
-                if (!($course instanceof Course)) {
+                if (! ($course instanceof Course)) {
                     throw new \Exception('Invalid course');
                 }
 
@@ -110,7 +111,7 @@ class CourseRepository
                 }
             }
 
-            return self::schedulesFilter($schedules, $dateStart, $dateFin, false, $orderColumn, $order, $dateFormat);
+            return self::schedulesFilter($schedules, $startDate, $endDate, false, $orderColumn, $order, $dateFormat);
         }
 
         return null;
@@ -118,8 +119,8 @@ class CourseRepository
 
     public static function schedulesFilter(
         $schedules,
-        $dateStart = null,
-        $dateFin = null,
+        $startDate = null,
+        $endDate = null,
         $strict = false,
         $orderColumn = 'start_date',
         $order = 'DESC',
@@ -130,26 +131,30 @@ class CourseRepository
 
         $schedules = collect($schedules);
 
-        if ($dateStart) {
-            $date = $strict ? $dateStart : $dateStart . ' 00:00';
-            $dateStart = Carbon::createFromFormat($dateFormat, $date)->getTimestamp();
+        if ($startDate) {
+            $date = $strict ? $startDate : $startDate . ' 00:00';
+            $startDate = Carbon::createFromFormat($dateFormat, $date)->getTimestamp();
         }
 
-        if ($dateFin) {
-            $date = $strict ? $dateFin : $dateFin . ' 23:59';
-            $dateFin = Carbon::createFromFormat($dateFormat, $date)->getTimestamp();
+        if ($endDate) {
+            $date = $strict ? $endDate : $endDate . ' 23:59';
+            $endDate = Carbon::createFromFormat($dateFormat, $date)->getTimestamp();
         }
 
-        $schedules = $schedules->filter(function ($value, $key) use ($dateStart, $dateFin) {
+        $schedules = $schedules->filter(function ($schedule, $key) use ($startDate, $endDate) {
             $result = true;
-            $timestamp = $value->start_date->getTimestamp();
+            $timestamp = null;
 
-            if ($dateStart) {
-                $result = $timestamp >= $dateStart;
+            if ($schedule->start_date instanceof CarbonInterface) {
+                $timestamp = $schedule->start_date->getTimestamp();
             }
 
-            if ($result && $dateFin) {
-                $result = $timestamp <= $dateFin;
+            if ($timestamp && $startDate) {
+                $result = $timestamp >= $startDate;
+            }
+
+            if ($timestamp && $result && $endDate) {
+                $result = $timestamp <= $endDate;
             }
 
             return $result;
