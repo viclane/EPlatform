@@ -18,6 +18,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/da', function () {
+    return view('admin.dashboard');
+});
+
+Route::get('/user', function () {
+    return view('admin.admin.user');
+});
+
+
 Auth::routes();
 Route::get('/instructors/register', [\App\Http\Controllers\Auth\RegisterController::class, 'instructorForm'])->name('teachers.register');
 

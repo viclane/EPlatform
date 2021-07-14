@@ -17,7 +17,7 @@
                                 <div class="col-md-3 card">
                                     <div class="card-body bg-primary">
                                         <p class="text-white text-bold">
-                                            <strong class="text-h6">{{ $courses_count }}</strong>
+                                            <strong class="text-h6">{{ $course_count }}</strong>
                                             Course
                                         </p>
                                     </div>

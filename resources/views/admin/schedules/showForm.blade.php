@@ -28,7 +28,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="start_date">Start date</label>
-                                        <input type="text" placeholder="dd/mm/yyyy" name="start_date" id="start_date" value="{{ old('start_date', $schedule->start_date) }}" class="form-control @error('start_date') is-invalid @enderror" required>
+                                        <input type="text" placeholder="dd/mm/yyyy" name="start_date" id="start_date" 
+                                        value="{{ old('start_date', $schedule->start_date) }}" class="form-control @error('start_date') 
+                                        is-invalid @enderror" required>
 
                                         @error('start_date')
                                         <span class="invalid-feedback" role="alert">

@@ -19,7 +19,6 @@ class Schedule extends Model
     ];
 
     protected $appends = [
-        'start_date', 'end_date',
         'start_time', 'end_time'
     ];
 
@@ -30,29 +29,29 @@ class Schedule extends Model
 
     public function getStartDateAttribute()
     {
-        return $this->start_date
-            ? $this->start_date->format('Y-m-d')
+        return isset($this->start_date)
+            ? $this->attributes['start_date']->format('Y-m-d')
             : null;
     }
 
-    public function getFinDateAttribute()
+    public function getEndDateAttribute()
     {
-        return $this->end_date
-            ? $this->end_date->format('Y-m-d')
+        return isset($this->end_date)
+            ? $this->attributes['end_date']->format('Y-m-d')
             : null;
     }
 
-    public function getStartHeureAttribute()
+    public function getStartTimeAttribute()
     {
-        return $this->start_date
-            ? $this->start_date->format('H:i')
+        return isset($this->start_date)
+            ? $this->attributes['start_date']->format('H:i')
             : null;
     }
 
-    public function getFinHeureAttribute()
+    public function getEndTimeAttribute()
     {
-        return $this->end_date
-            ? $this->end_date->format('H:i')
+        return isset($this->end_date)
+            ? $this->attributes['end_date']->format('H:i')
             : null;
     }
 }
