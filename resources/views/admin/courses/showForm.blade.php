@@ -41,7 +41,7 @@
 
                                 <select name="formation_id" id="formation_id"
                                     class="form-control @error('formation_id') is-invalid @enderror">
-                                    <option value="" @if(old('formation_id', $course->formation_id) == null) selected @endif>Aucune formation</option>
+                                    <option value="" @if(old('formation_id', $course->formation_id) == null) selected @endif>No formation</option>
                                     @foreach($formations as $formation)
                                     <option value="{{ $formation->id }}" data-students="{{ $formation->students }}"
                                         @if(old('formation_id', $course->formation_id) == $formation->id) selected @endif>
@@ -101,7 +101,7 @@
                                     $students_array = $course->students->pluck('id')->toArray();
                                 @endphp
                                 <select id="students" name="students[]" class="form-control" multiple>
-                                    <option value="" disabled>Choisir les students</option>
+                                    <option value="" disabled>Choose students</option>
                                     @if ($course->formation)
                                         @foreach ($course->formation->students as $student)
                                         <option value="{{ $student->id }}"

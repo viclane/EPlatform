@@ -6,7 +6,7 @@
     }
 @endphp
 
-@extends('layouts.app', ['title' => 'Add un utilisateur'])
+@extends('layouts.app', ['title' => 'Add user'])
 
 @section('content')
 

@@ -80,7 +80,7 @@
                                         </a>
                                         <a href="{{ route('admin.courses.edit', ['course' => $course->id]) }}" class="btn btn-secondary btn-sm mr-1 mb-1">
                                             <i class="fa fa-pen"></i>
-                                            Modify
+                                            Edit
                                         </a>
                                         <form action="{{ route('admin.courses.destroy', ['course' => $course->id]) }}" method="POST"
                                             class="d-inline-block">

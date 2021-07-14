@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends(layouts.app)
 
 @section('content')
 <div class="container">
@@ -7,13 +7,13 @@
             <div class="card">
                 <div class="card-header d-flex">
                     @if ($user->id == Auth::user()->id)
-                        Mon profle
+                        My profile
                         <a href="{{ route('profile.edit') }}" class="btn btn-success ml-auto">
                             <i class="fa fa-pen"></i>
-                            Editer
+                            Edit
                         </a>
                     @else
-                    {{ __('Profile de ') . $user->full_name }}
+                    {{ __('Profile of ') . $user->full_name }}
                     @endif
                 </div>
 

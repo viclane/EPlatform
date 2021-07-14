@@ -27889,7 +27889,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
      * values(object);
      * // => [1, 2]
      *
-     * // Modify the result cache.
+     * // Edit the result cache.
      * values.cache.set(object, ['a', 'b']);
      * values(object);
      * // => ['a', 'b']

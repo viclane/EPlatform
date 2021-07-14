@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Liste des schedules'])
+@extends('layouts.app', ['title' => 'Schedule list'])
 
 @section('content')
     <div class="container">
@@ -6,20 +6,20 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex">
-                        Liste des schedules
+                        Schedule list
 
                         @if ($active_user)
                             de {{ $active_user->full_name }}
                         @endif
 
                         @if ($active_course)
-                            du cours {{ $active_course->title }}
+                            of course {{ $active_course->title }}
                         @endif
 
                         <div class="col-md-6 ml-auto">
                             <form action="" method="get" class="form-inline">
                                 <div class="form-group">
-                                    <label for="start_date">Date start</label>
+                                    <label for="start_date">Start Date</label>
                                     <input type="date" placeholder="yyyy/mm/dd" id="start_date" name="start_date"
                                         class="form-control mx-2 mb-2 @error('start_date') is-invalid @endif"
                                         value="{{ old('start_date', $start_date ?? '') }}"/>
@@ -30,7 +30,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    <label for="end_date">Date Fin</label>
+                                    <label for="end_date">End Date</label>
                                     <input type="date" placeholder="yyyy/mm/dd" id="end_date" name="end_date"
                                         class="form-control mx-2 mb-2  @error('end_date') is-invalid @endif"
                                         value="{{ old('end_date', $end_date ?? '') }}"/>
@@ -43,7 +43,7 @@
 
                                 <div class="form-group mr-2 mb-2">
                                     <select class="form-control" name="course_id">
-                                        <option value="" @if($active_course == null) selected @endif>Tous les courses</option>
+                                        <option value="" @if($active_course == null) selected @endif>All courses</option>
                                         @foreach ($courses as $course)
                                             <option value="{{ $course->id }}" @if($active_course && $active_course->id == $course->id) selected @endif>
                                                 {{ $course->title }}
@@ -69,7 +69,7 @@
                         <table class="table table-responsive">
                             <thead>
                                 <tr>
-                                    <th scope="col">Nom du cours</th>
+                                    <th scope="col">Course Name</th>
                                     <th scope="col">Start date</th>
                                     <th scope="col">End date</th>
                                     <th scope="col" style="width: 25%;">Actions</th>

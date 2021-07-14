@@ -10,7 +10,7 @@
 
                         <a href="{{ route('admin.formations.edit', ['formation' => $formation->id]) }}" class="ml-auto btn btn-primary">
                             <i class="fa fa-pen"></i>
-                            Editer
+                            Edit
                         </a>
                     </div>
                     <div class="card-body">

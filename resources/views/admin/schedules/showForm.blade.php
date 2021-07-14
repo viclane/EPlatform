@@ -9,7 +9,7 @@
     }
 @endphp
 
-@extends('layouts.app', ['title' => $editing ? 'Edit un schedule' : 'Add schedule'])
+@extends('layouts.app', ['title' => $editing ? 'Edit schedule' : 'Add schedule'])
 
 @section('content')
 
@@ -58,7 +58,7 @@
                                     <div class="form-group">
                                         <label for="end_date">
                                             End date
-                                            <small>Laisser vide si la date est equivalente a la date de start</small>
+                                            <small>Leave empty if the date is equivalent to the start date</small>
                                         </label>
                                         <input type="text" placeholder="yyyy/mm/dd" name="end_date" id="end_date" 
                                             value="{{ old('end_date', $schedule->format_end_date) }}" 
@@ -89,14 +89,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="course_id">
-                                    {{ __('Cours') }}
+                                    {{ __('Course') }}
                                 </label>
 
                                 <select name="course_id" id="course_id"
                                     class="form-control @error('course_id') is-invalid @enderror" required>
                                     <option value="" disabled
                                         @if(old('course_id', $schedule->course_id) == null) selected @endif>
-                                        Choisir un cours
+                                        Choose a course
                                     </option>
                                     @foreach($courses as $course)
                                     <option value="{{ $course->id }}"
@@ -119,7 +119,7 @@
                                 </button>
                                 @if ($editing)
                                     <a href="{{ route('admin.schedules.index') }}" class="btn btn-secondary">
-                                        Annuler
+                                        To cancel
                                     </a>
                                 @else
                                     <button type="reset" class="btn btn-secondary">Reset</button>

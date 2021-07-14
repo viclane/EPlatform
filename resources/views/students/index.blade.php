@@ -17,7 +17,7 @@
                                 <div class="col-md-3 card">
                                     <div class="card-body bg-primary">
                                         <p class="text-white text-bold">
-                                            <strong class="text-h6">{{ $course_count }}</strong>
+                                            <strong class="text-h6">{{ $courses_count }}</strong>
                                             Course
                                         </p>
                                     </div>
@@ -25,7 +25,7 @@
                                 <div class="col-md-3 card">
                                     <div class="card-body bg-success">
                                         <p class="text-white text-bold">
-                                            <strong class="text-h6">{{ $passed_count }}</strong>
+                                            <strong class="text-h6">0</strong>
                                             Past schedules
                                         </p>
                                     </div>
@@ -33,7 +33,7 @@
                                 <div class="col-md-3 card">
                                     <div class="card-body bg-danger">
                                         <p class="text-white text-bold">
-                                            <strong class="text-h6">{{ $programmed_count }}</strong>
+                                            <strong class="text-h6">0</strong>
                                             Schedules planned
                                         </p>
                                     </div>

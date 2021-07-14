@@ -25,7 +25,7 @@ class StudentController extends Controller
     public function index(Request $request)
     {
         return $this->view('students.index', [
-            'data' => $request->user()->courses
+            'courses_count' => count($request->user()->courses)
         ]);
     }
 

@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => "Affichage du schedule du cours {$schedule->course->title}"])
+@extends('layouts.app', ['title' => "Course's schedule display {$schedule->course->title}"])
 
 @section('content')
     <div class="container">
@@ -6,11 +6,11 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex">
-                        Details du schedule
+                        Schedule details
 
                         <a href="{{ route('admin.schedules.edit', ['schedule' => $schedule->id]) }}" class="ml-auto btn btn-primary">
                             <i class="fa fa-pen"></i>
-                            Editer
+                            Edit
                         </a>
                     </div>
                     <div class="card-body">
@@ -18,7 +18,7 @@
                         <br/>
                         End date: {{ $schedule->end_date }}
                         <br/>
-                        Cours:
+                        Course:
                         <a href="{{ route('admin.courses.show', ['course' => $schedule->course->id]) }}">
                             {{ $schedule->course->title }}
                         </a>
@@ -29,7 +29,7 @@
                                 {{ $schedule->course->instructor->full_name }}
                             </a>
                         @else
-                            Non assigné
+                            Not assigned
                         @endif
                         <br/>
                     </div>
